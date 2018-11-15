@@ -1,10 +1,27 @@
 {% extends '_base.html' %}
+{#{% extends 'oldbase.html' %}#}
+{#TODO MERGE _base & oldbase with logout / login functionality from both#}
+
 {% load static %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static "css/home.css" %}">
+{% endblock %}
 
 {% block title %}Home page{% endblock title %}
 
 {% block content %}
-<h1>Home page</h1>
-<img src="{% static 'images/falconx1.jpg' %}" class="img-fluid" alt="FalconX launch"/>
+    <img src="{% static 'images/Psychology_image.png' %}" class="img-fluid" alt="psylogo launch"/>
+    <h1>SOSA</h1>
+    <p>Simultaneous Object and Subjective Assessment</p>
+    <hr>
+    <p> Welcome {{ user.email }}!</p>
+    <a href="/Sosa/boards" class="btn btn-primary">Create Board</a>
+    <a href="/Sosa/stimsets" class="btn btn-primary">Create Stimulus Set</a>
+    <a href="#" class="btn btn-primary">Create Experiment</a>
+    <a href="/Sosa/view_results" class="btn btn-primary">View Results</a>
+    <!--TODO delete for production-->
+    <a href="#" class="btn btn-danger">Experiment View</a>
+
 {% endblock content %}
 
