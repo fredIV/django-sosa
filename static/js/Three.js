@@ -1113,7 +1113,7 @@ THREE.Quaternion.slerp = function ( qa, qb, qm, t ) {
 
 	return qm.copy( qa ).slerp( qb, t );
 
-}
+};
 
 // File:src/math/Vector2.js
 
@@ -6730,8 +6730,7 @@ THREE.Spline = function ( points ) {
 
 		return ( 2 * ( p1 - p2 ) + v0 + v1 ) * t3 + ( - 3 * ( p1 - p2 ) - 2 * v0 - v1 ) * t2 + v0 * t + p1;
 
-	};
-
+}
 };
 
 // File:src/math/Triangle.js
@@ -7008,7 +7007,7 @@ THREE.Clock.prototype = {
  * https://github.com/mrdoob/eventdispatcher.js/
  */
 
-THREE.EventDispatcher = function () {}
+THREE.EventDispatcher = function () {};
 
 THREE.EventDispatcher.prototype = {
 
@@ -7535,9 +7534,8 @@ THREE.Object3D.prototype = {
 
 			return this;
 
-		};
-
-		if ( object === this ) {
+}
+        if ( object === this ) {
 
 			console.error( "THREE.Object3D.add:", object, "can't be added as a child of itself." );
 			return this;
@@ -7577,9 +7575,8 @@ THREE.Object3D.prototype = {
 
 			}
 
-		};
-
-		var index = this.children.indexOf( object );
+}
+        var index = this.children.indexOf( object );
 
 		if ( index !== - 1 ) {
 
@@ -7945,7 +7942,7 @@ THREE.Object3D.prototype = {
 
 			return data;
 
-		}
+		};
 
 		output.object = parseObject( this );
 
@@ -8108,7 +8105,7 @@ THREE.Face3.prototype = {
 
 THREE.Face4 = function ( a, b, c, d, normal, color, materialIndex ) {
 
-	console.warn( 'THREE.Face4 has been removed. A THREE.Face3 will be created instead.' )
+	console.warn( 'THREE.Face4 has been removed. A THREE.Face3 will be created instead.' );
 	return new THREE.Face3( a, b, c, normal, color, materialIndex );
 
 };
@@ -8531,7 +8528,7 @@ THREE.BufferGeometry.prototype = {
 
 		}
 
-		this.computeBoundingSphere()
+		this.computeBoundingSphere();
 
 		return this;
 
@@ -9928,10 +9925,8 @@ THREE.Geometry.prototype = {
 
 			}
 
-		};
-
-
-		// if faces are completely degenerate after merging vertices, we
+}
+        // if faces are completely degenerate after merging vertices, we
 		// have to remove them from the geometry.
 		var faceIndicesToRemove = [];
 
@@ -10483,7 +10478,7 @@ THREE.PerspectiveCamera.prototype.setLens = function ( focalLength, frameHeight 
 	this.fov = 2 * THREE.Math.radToDeg( Math.atan( frameHeight / ( focalLength * 2 ) ) );
 	this.updateProjectionMatrix();
 
-}
+};
 
 
 /**
@@ -11167,7 +11162,7 @@ THREE.Loader.prototype = {
 				var wrapMap = {
 					'repeat': THREE.RepeatWrapping,
 					'mirror': THREE.MirroredRepeatWrapping
-				}
+				};
 
 				if ( wrapMap[ wrap[ 0 ] ] !== undefined ) texture.wrapS = wrapMap[ wrap[ 0 ] ];
 				if ( wrapMap[ wrap[ 1 ] ] !== undefined ) texture.wrapT = wrapMap[ wrap[ 1 ] ];
@@ -11629,7 +11624,7 @@ THREE.ImageLoader.prototype = {
 
 	}
 
-}
+};
 
 // File:src/loaders/JSONLoader.js
 
@@ -11867,7 +11862,7 @@ THREE.JSONLoader.prototype.parse = function ( json, texturePath ) {
 						uvLayer = json.uvs[ i ];
 
 						geometry.faceVertexUvs[ i ][ fi ] = [];
-						geometry.faceVertexUvs[ i ][ fi + 1 ] = []
+						geometry.faceVertexUvs[ i ][ fi + 1 ] = [];
 
 						for ( j = 0; j < 4; j ++ ) {
 
@@ -12049,9 +12044,8 @@ THREE.JSONLoader.prototype.parse = function ( json, texturePath ) {
 
 		}
 
-	};
-
-	function parseSkin() {
+}
+    function parseSkin() {
 		var influencesPerVertex = ( json.influencesPerVertex !== undefined ) ? json.influencesPerVertex : 2;
 
 		if ( json.skinWeights ) {
@@ -12099,9 +12093,8 @@ THREE.JSONLoader.prototype.parse = function ( json, texturePath ) {
 		geometry.animation = json.animation;
 		geometry.animations = json.animations;
 
-	};
-
-	function parseMorphing( scale ) {
+}
+    function parseMorphing( scale ) {
 
 		if ( json.morphTargets !== undefined ) {
 
@@ -12156,9 +12149,8 @@ THREE.JSONLoader.prototype.parse = function ( json, texturePath ) {
 
 		}
 
-	};
-
-	if ( json.materials === undefined || json.materials.length === 0 ) {
+}
+    if ( json.materials === undefined || json.materials.length === 0 ) {
 
 		return { geometry: geometry };
 
@@ -18237,9 +18229,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		_this.info.memory.geometries ++;
 
-	};
-
-	function createLineBuffers ( geometry ) {
+}
+    function createLineBuffers ( geometry ) {
 
 		geometry.__webglVertexBuffer = _gl.createBuffer();
 		geometry.__webglColorBuffer = _gl.createBuffer();
@@ -18247,9 +18238,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		_this.info.memory.geometries ++;
 
-	};
-
-	function createMeshBuffers ( geometryGroup ) {
+}
+    function createMeshBuffers ( geometryGroup ) {
 
 		geometryGroup.__webglVertexBuffer = _gl.createBuffer();
 		geometryGroup.__webglNormalBuffer = _gl.createBuffer();
@@ -18292,9 +18282,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		_this.info.memory.geometries ++;
 
-	};
-
-	// Events
+}
+    // Events
 
 	var onObjectRemoved = function ( event ) {
 
@@ -18650,9 +18639,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		}
 
-	};
-
-	function initParticleBuffers ( geometry, object ) {
+}
+    function initParticleBuffers ( geometry, object ) {
 
 		var nvertices = geometry.vertices.length;
 
@@ -18665,9 +18653,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		initCustomAttributes( object );
 
-	};
-
-	function initLineBuffers ( geometry, object ) {
+}
+    function initLineBuffers ( geometry, object ) {
 
 		var nvertices = geometry.vertices.length;
 
@@ -18679,9 +18666,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		initCustomAttributes( object );
 
-	};
-
-	function initMeshBuffers ( geometryGroup, object ) {
+}
+    function initMeshBuffers ( geometryGroup, object ) {
 
 		var geometry = object.geometry,
 			faces3 = geometryGroup.faces3,
@@ -18808,23 +18794,20 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		geometryGroup.__inittedArrays = true;
 
-	};
-
-	function getBufferMaterial( object, geometryGroup ) {
+}
+    function getBufferMaterial( object, geometryGroup ) {
 
 		return object.material instanceof THREE.MeshFaceMaterial
 			 ? object.material.materials[ geometryGroup.materialIndex ]
 			 : object.material;
 
-	};
-
-	function materialNeedsSmoothNormals ( material ) {
+}
+    function materialNeedsSmoothNormals ( material ) {
 
 		return material && material.shading !== undefined && material.shading === THREE.SmoothShading;
 
-	};
-
-	// Buffer setting
+}
+    // Buffer setting
 
 	function setParticleBuffers ( geometry, hint, object ) {
 
@@ -20116,9 +20099,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		}
 
-	};
-
-	function setDirectBuffers( geometry ) {
+}
+    function setDirectBuffers( geometry ) {
 
 		var attributes = geometry.attributes;
 		var attributesKeys = geometry.attributesKeys;
@@ -20879,9 +20861,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 				activeInfluenceIndices.push( [ 0, 0 ] );
 
-			};
-
-			var influenceIndex, m = 0;
+}
+            var influenceIndex, m = 0;
 
 			while ( m < material.numSupportedMorphTargets ) {
 
@@ -21616,9 +21597,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 			}
 		);
 
-	};
-
-	function addBufferImmediate( objlist, object ) {
+}
+    function addBufferImmediate( objlist, object ) {
 
 		objlist.push(
 			{
@@ -21630,9 +21610,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 			}
 		);
 
-	};
-
-	// Objects updates
+}
+    // Objects updates
 
 	function updateObject( object, scene ) {
 
@@ -24973,7 +24952,7 @@ THREE.LensFlarePlugin = function ( renderer, flares ) {
 		attributes = {
 			vertex: gl.getAttribLocation ( program, "position" ),
 			uv:     gl.getAttribLocation ( program, "uv" )
-		}
+		};
 
 		uniforms = {
 			renderType:     gl.getUniformLocation( program, "renderType" ),
@@ -25052,7 +25031,7 @@ THREE.LensFlarePlugin = function ( renderer, flares ) {
 
 			// setup arrays for gl programs
 
-			screenPosition.copy( tempPosition )
+			screenPosition.copy( tempPosition );
 
 			screenPositionPixels.x = screenPosition.x * halfViewportWidth + halfViewportWidth;
 			screenPositionPixels.y = screenPosition.y * halfViewportHeight + halfViewportHeight;
@@ -25103,7 +25082,7 @@ THREE.LensFlarePlugin = function ( renderer, flares ) {
 
 				// update object positions
 
-				flare.positionScreen.copy( screenPosition )
+				flare.positionScreen.copy( screenPosition );
 
 				if ( flare.customUpdateCallback ) {
 
@@ -25712,8 +25691,7 @@ THREE.ShadowMapPlugin = function ( _renderer, _lights, _webglObjects, _webglObje
 			? object.material.materials[ 0 ]
 			: object.material;
 
-	};
-
+}
 };
 
 // File:src/renderers/webgl/plugins/SpritePlugin.js
@@ -26066,9 +26044,8 @@ THREE.SpritePlugin = function ( renderer, sprites ) {
 
 		return program;
 
-	};
-
-	function painterSortStable ( a, b ) {
+}
+    function painterSortStable ( a, b ) {
 
 		if ( a.z !== b.z ) {
 
@@ -26080,8 +26057,7 @@ THREE.SpritePlugin = function ( renderer, sprites ) {
 
 		}
 
-	};
-
+}
 };
 
 // File:src/extras/GeometryUtils.js
@@ -26191,7 +26167,7 @@ THREE.ImageUtils = {
 
 			} );
 
-		}
+		};
 
 		for ( var i = 0, il = array.length; i < il; ++ i ) {
 
@@ -26223,20 +26199,20 @@ THREE.ImageUtils = {
 
 			return [ a[ 1 ] * b[ 2 ] - a[ 2 ] * b[ 1 ], a[ 2 ] * b[ 0 ] - a[ 0 ] * b[ 2 ], a[ 0 ] * b[ 1 ] - a[ 1 ] * b[ 0 ] ];
 
-		}
+		};
 
 		var subtract = function ( a, b ) {
 
 			return [ a[ 0 ] - b[ 0 ], a[ 1 ] - b[ 1 ], a[ 2 ] - b[ 2 ] ];
 
-		}
+		};
 
 		var normalize = function ( a ) {
 
 			var l = Math.sqrt( a[ 0 ] * a[ 0 ] + a[ 1 ] * a[ 1 ] + a[ 2 ] * a[ 2 ] );
 			return [ a[ 0 ] / l, a[ 1 ] / l, a[ 2 ] / l ];
 
-		}
+		};
 
 		depth = depth | 1;
 
@@ -26432,9 +26408,8 @@ THREE.FontUtils = {
 
 			throw "The font " + this.face + " with " + this.weight + " weight and " + this.style + " style is missing."
 
-		};
-
-	},
+}
+    },
 
 	loadFace: function ( data ) {
 
@@ -26823,8 +26798,8 @@ THREE.FontUtils.generateShapes = function ( text, parameters ) {
 
 		for ( p = 0; p < n; p ++ ) {
 
-			px = contour[ verts[ p ] ].x
-			py = contour[ verts[ p ] ].y
+			px = contour[ verts[ p ] ].x;
+			py = contour[ verts[ p ] ].y;
 
 			if ( ( ( px === ax ) && ( py === ay ) ) ||
 				 ( ( px === bx ) && ( py === by ) ) ||
@@ -27179,12 +27154,12 @@ THREE.Curve.prototype.getUtoTmapping = function ( u, distance ) {
 		if ( comparison < 0 ) {
 
 			low = i + 1;
-			continue;
+
 
 		} else if ( comparison > 0 ) {
 
 			high = i - 1;
-			continue;
+
 
 		} else {
 
@@ -27446,9 +27421,8 @@ THREE.CurvePath.prototype.getCurveLengths = function() {
 
 		return this.cacheLengths;
 
-	};
-
-	// Get length of subsurve
+}
+    // Get length of subsurve
 	// Push sums into cached array
 
 	var lengths = [], sums = 0;
@@ -27774,8 +27748,7 @@ THREE.Path.prototype.fromPoints = function ( vectors ) {
 
 		this.lineTo( vectors[ v ].x, vectors[ v ].y );
 
-	};
-
+}
 };
 
 // startPath() endPath()?
@@ -28237,9 +28210,8 @@ THREE.Path.prototype.toShapes = function( isCCW, noHoles ) {
 		//console.log("shape", shapes);
 
 		return shapes;
-	};
-
-	function isPointInsidePolygon( inPt, inPolygon ) {
+    }
+    function isPointInsidePolygon( inPt, inPolygon ) {
 		var EPSILON = 0.0000000001;
 
 		var polyLen = inPolygon.length;
@@ -29130,10 +29102,10 @@ THREE.SplineCurve.prototype.getPoint = function ( t ) {
 	var intPoint = Math.floor( point );
 	var weight = point - intPoint;
 
-	var point0 = points[ intPoint == 0 ? intPoint : intPoint - 1 ]
-	var point1 = points[ intPoint ]
-	var point2 = points[ intPoint > points.length - 2 ? points.length -1 : intPoint + 1 ]
-	var point3 = points[ intPoint > points.length - 3 ? points.length -1 : intPoint + 2 ]
+	var point0 = points[ intPoint == 0 ? intPoint : intPoint - 1 ];
+	var point1 = points[ intPoint ];
+	var point2 = points[ intPoint > points.length - 2 ? points.length -1 : intPoint + 1 ];
+	var point3 = points[ intPoint > points.length - 3 ? points.length -1 : intPoint + 2 ];
 
 	var vector = new THREE.Vector2();
 
@@ -30694,7 +30666,7 @@ THREE.CylinderGeometry = function ( radiusTop, radiusBottom, height, radialSegme
 
 	this.computeFaceNormals();
 
-}
+};
 
 THREE.CylinderGeometry.prototype = Object.create( THREE.Geometry.prototype );
 
@@ -30944,7 +30916,7 @@ THREE.ExtrudeGeometry.prototype.addShape = function ( shape, options ) {
 
 			// Don't normalize!, otherwise sharp corners become ugly
 			//  but prevent crazy spikes
-			var v_trans_lensq = ( v_trans_x * v_trans_x + v_trans_y * v_trans_y )
+			var v_trans_lensq = ( v_trans_x * v_trans_x + v_trans_y * v_trans_y );
 			if ( v_trans_lensq <= 2 ) {
 				return	new THREE.Vector2( v_trans_x, v_trans_y );
 			} else {
@@ -33724,7 +33696,7 @@ THREE.GridHelper.prototype.setColors = function( colorCenterLine, colorGrid ) {
 
 	this.geometry.colorsNeedUpdate = true;
 
-}
+};
 
 // File:src/extras/helpers/HemisphereLightHelper.js
 

@@ -20,7 +20,9 @@
 
 <div id="Stats-output">
 </div>
+
 <!-- Div which will hold the Output -->
+{#output#}
 <div id="WebGL-output">
 </div>
 
@@ -30,8 +32,16 @@
     function init() {
         var stats = initStats();
         // create a scene, that will hold all our elements such as objects, cameras and lights.
+
+
+        // SCENE
+
+
         var scene = new THREE.Scene();
         // create a camera, which defines where we're looking at.
+        // CAMERA
+
+
         var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
         // create a render and set the size
         var webGLRenderer = new THREE.WebGLRenderer();
@@ -133,6 +143,7 @@
     }
     window.onload = init;
 </script>
+{#END JAVASCRIPT that renders threejs object#}
 
 </body>
 </html>
