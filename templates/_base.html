@@ -14,9 +14,24 @@
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 {% endblock %}
+
+    <!-- Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!--Three.js scripts-->
+  <script src='{% static "js/Three.js" %}'></script>
+  <script src='{% static "js/Detector.js" %}'></script>
+  <script src='{% static "js/DragControls.js" %}'></script>
+  <script src='{% static "js/OrbitControls.js" %}'></script>
+  {% block javascript %}
+  <!-- Project JS -->
+  <script src="{% static 'js/base.js' %}"></script>
+  {% endblock javascript %}
+    <script src="{% static 'js/hidemobile.js' %}"></script>
 </head>
 
-<body>
+<body onload="hideMobile()">
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <a class="navbar-brand" href="{% url 'home' %}">Django Sosa</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,18 +82,9 @@
         </div>
     </div>
 
-   <nav class="navbar fixed-bottom navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">&copy; Sosa 2018</a>
-  </nav>
-
-    <!-- Bootstrap JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  {% block javascript %}
-  <!-- Project JS -->
-  <script src="{% static 'js/base.js' %}"></script>
-  {% endblock javascript %}
+{#   <nav class="navbar fixed-bottom navbar-dark bg-dark">#}
+{#    <a class="navbar-brand" href="#">&copy; Sosa 2018</a>#}
+{#  </nav>#}
 
 </body>
 </html>

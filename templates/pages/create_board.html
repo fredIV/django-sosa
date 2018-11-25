@@ -1,4 +1,5 @@
-{% extends "base_admin.html" %}
+{#{% extends "base_admin.html" %}#}
+{% extends "_base.html" %}
 {% load static %}
 
 {% block css %}
@@ -49,8 +50,29 @@
 
      <script src="{% static "js/rbgValueGenerator.js" %}"></script>
 
-    <div class="row justify-content-center">
-        <button class="btn btn-primary">Save</button>
+   <script>
+        function sendBoard() {
+            $("#BoardRsubmit").val($("#BoardRvalue").value);
+            $("#BoardGsubmit").val($("#BoardGvalue").value);
+            $("#BoardBsubmit").val("value", $("#BoardBvalue").value);
+            $("#BackgroundRsubmit").val("value", $("#BackgroundRvalue").value);
+            $("#BackgroundBsubmit").val("value", $("#BackgroundBvalue").value);
+            $("#BackgroundGsubmit").val("value", $("#BackgroundGvalue").value);
+        }
+   </script>
+
+    <div>
+        <form onsubmit="sendBoard()">
+            <input type="hidden" id="BoardRsubmit">
+            <input type="hidden" id="BoardGsubmit">
+            <input type="hidden" id="BoardBsubmit">
+            <input type="hidden" id="BackgroundRsubmit">
+            <input type="hidden" id="BackgroundGsubmit">
+            <input type="hidden" id="BackgroundBsubmit">
+            <input type="hidden" id="BoardTiltX">
+            <input type="hidden" id="BoardTiltY">
+            <input type="submit" class="btn btn-primary" id="buttonThing" value="Save">
+        </form>
     </div>
 
     </div>

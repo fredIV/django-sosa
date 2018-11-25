@@ -1,5 +1,5 @@
 {% extends '_base.html' %}
-{% load static crispy_forms_tags %}
+{% load static crispy_forms_tags crispy_forms_field crispy_forms_filters crispy_forms_utils %}
 
 {% block css %}
 <!-- Bootstrap CSS -->
@@ -11,7 +11,7 @@
 {% block title %}Log in{% endblock %}
 
 {% block content %}
-    <img src="{% static 'images/Psychology_image.png' %}" class="img-fluid" alt="psylogo launch"/>
+    <img src="{% static 'images/Psychology_image.png' %}" class="img-fluid" alt="psylogo launch" height="200" width="200"/>
     <h2>Welcome to SOSA!</h2>
     <small>This login page is for administrators. To participate in an experiment, click the test link that you were given by an administrator.</small>
 
