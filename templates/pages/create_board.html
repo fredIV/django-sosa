@@ -68,9 +68,8 @@
     {% endif %}
     <form method="post" action="">
         {% csrf_token %}
-        <div class="fieldWrapper">
-            {{ form.boardname }}
-        </div>
+        {{ form.boardname}}
+        <input type="submit" value="SAVE" id="create">
     </form>
 
 
