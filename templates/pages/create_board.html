@@ -52,6 +52,8 @@
 
    <script>
         function sendBoard() {
+            {#Maybe change this function to pull the right attribute#}
+            $("#BoardName").val($("#BoardNameSubmit").value);
             $("#BoardRsubmit").val($("#BoardRvalue").value);
             $("#BoardGsubmit").val($("#BoardGvalue").value);
             $("#BoardBsubmit").val("value", $("#BoardBvalue").value);
@@ -62,7 +64,13 @@
    </script>
 
     <div>
+    Board Name:
+    <input type="text" id="BoardName" maxlength="10" size="10px">
+    </div>
+
+    <div>
         <form onsubmit="sendBoard()">
+            <input type="hidden" id="BoardNameSubmit">
             <input type="hidden" id="BoardRsubmit">
             <input type="hidden" id="BoardGsubmit">
             <input type="hidden" id="BoardBsubmit">
