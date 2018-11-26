@@ -23,6 +23,10 @@ a {
     width: 175px;
 }
 
+small {
+	margin-top: 20px;
+}
+
 #home {
 	width: 60px;
 	position: absolute;
