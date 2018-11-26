@@ -1,0 +1,75 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/create_experiment.css" %}">
+{% endblock %}
+
+{% block js %}
+    <script src="{% static "js/create_experiment.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+    <script>
+        var experiment = [-1, -1];
+
+        function updateStim(num) {
+            experiment[0] = num;
+        }
+
+        function updateBoard(num) {
+
+        }
+    </script>
+    <div class="row">
+        <div class="col">
+            <table id="boards" align="center">
+                <tr class="header">
+                    <th>Boards</th>
+                </tr>
+                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+                <tr>
+                    <td>Board 1</td>
+                </tr>
+                <tr>
+                    <td>Board 2</td>
+                </tr>
+                <tr>
+                    <td>Board 3</td>
+                </tr>
+                <tr>
+                    <td>Board 4</td>
+                </tr>
+                <tr>
+                    <td>Board 5</td>
+                </tr>
+                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+            </table>
+        </div>
+        <div class="col">
+            <table id="stimuli" align="center">
+                <tr class="header">
+                    <th>Stimulus Sets</th>
+                </tr>
+                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+                <tr>
+                    <td>Stim Set 1</td>
+                </tr>
+                <tr>
+                    <td>Stim Set 1</td>
+                </tr>
+                <tr>
+                    <td>Stim Set 3</td>
+                </tr>
+                <tr>
+                    <td>Stim Set 4</td>
+                </tr>
+                <tr>
+                    <td>Stim Set 5</td>
+                </tr>
+                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+            </table>
+        </div>
+    </div>
+    <button class="btn btn-primary">Preview</button>
+{% endblock %}

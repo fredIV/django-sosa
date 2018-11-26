@@ -9,10 +9,6 @@ class AboutPageView(TemplateView):
     template_name = 'pages/about.html'
 
 
-class ThreePageView(TemplateView):
-    template_name = "pages/threejs.html"
-
-
 class LoginPageView(TemplateView):
     template_name = "account/login.html"
 
@@ -35,3 +31,7 @@ class StimSetPageView(TemplateView):
 
 class ViewResultsPageView(TemplateView):
     template_name = "pages/view_results.html"
+
+
+class CreateExperimentPageView(TemplateView):
+    template_name = "pages/create_experiment.html"
