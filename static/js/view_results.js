@@ -34,6 +34,7 @@ var selectedValue = document.getElementById("myDropdown").value;
 }
 
 function fillFilterOptions(){
+
 	var dropdownF = document.getElementById("myDropdown");
 	var tbl = document.getElementById("myTable");
 	var all = document.createElement('option');
@@ -70,12 +71,6 @@ function fillFilterOptions(){
 		}
 }
 
-
-// When the user clicks on the button, toggle between hiding and showing the dropdown content
-function hiddenToggle() {
-
-  dropdownF.classList.toggle("show");
-}
 
 
 //bring up new table or new page with results to this experiment and this ID, send GET----- currently, it just displays what was clicked.
