@@ -49,37 +49,54 @@
 
      <script src="{% static "js/rbgValueGenerator.js" %}"></script>
 
-   <script>
-        function sendBoard() {
+{#   <script>#}
+{#        function sendBoard() {#}
             {#Maybe change this function to pull the right attribute#}
-            $("#BoardName").val($("#BoardNameSubmit").value);
-            $("#BoardRsubmit").val($("#BoardRvalue").value);
-            $("#BoardGsubmit").val($("#BoardGvalue").value);
-            $("#BoardBsubmit").val("value", $("#BoardBvalue").value);
-            $("#BackgroundRsubmit").val("value", $("#BackgroundRvalue").value);
-            $("#BackgroundBsubmit").val("value", $("#BackgroundBvalue").value);
-            $("#BackgroundGsubmit").val("value", $("#BackgroundGvalue").value);
-        }
-   </script>
+{#            $("#BoardName").val($("#BoardNameSubmit").value);#}
+{#            $("#BoardRsubmit").val($("#BoardRvalue").value);#}
+{#            $("#BoardGsubmit").val($("#BoardGvalue").value);#}
+{#            $("#BoardBsubmit").val("value", $("#BoardBvalue").value);#}
+{#            $("#BackgroundRsubmit").val("value", $("#BackgroundRvalue").value);#}
+{#            $("#BackgroundBsubmit").val("value", $("#BackgroundBvalue").value);#}
+{#            $("#BackgroundGsubmit").val("value", $("#BackgroundGvalue").value);#}
+{#        }#}
+{#   </script>#}
 
-    <div>
-    Board Name:
-    <input type="text" id="BoardName" maxlength="10" size="10px">
-    </div>
 
-    <div>
-        <form onsubmit="sendBoard()">
-            <input type="hidden" id="BoardNameSubmit">
-            <input type="hidden" id="BoardRsubmit">
-            <input type="hidden" id="BoardGsubmit">
-            <input type="hidden" id="BoardBsubmit">
-            <input type="hidden" id="BackgroundRsubmit">
-            <input type="hidden" id="BackgroundGsubmit">
-            <input type="hidden" id="BackgroundBsubmit">
-            <input type="hidden" id="BoardTiltX">
-            <input type="hidden" id="BoardTiltY">
-            <input type="submit" class="btn btn-primary" id="buttonThing" value="Save">
-        </form>
-    </div>
+    {% if success %}
+        <h3> Board Added Successfully</h3>
+    {% endif %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="fieldWrapper">
+            {{ form.boardname }}
+        </div>
+    </form>
+
+
+
+
+
+
+{##}
+{#    <div>#}
+{#    Board Name:#}
+{#    <input type="text" id="BoardName" maxlength="10" size="10px">#}
+{#    </div>#}
+{##}
+{#    <div>#}
+{#        <form id="hidden_board_form" onsubmit="sendBoard()" method="post">#}
+{#            <input type="hidden" id="BoardNameSubmit">#}
+{#            <input type="hidden" id="BoardRsubmit">#}
+{#            <input type="hidden" id="BoardGsubmit">#}
+{#            <input type="hidden" id="BoardBsubmit">#}
+{#            <input type="hidden" id="BackgroundRsubmit">#}
+{#            <input type="hidden" id="BackgroundGsubmit">#}
+{#            <input type="hidden" id="BackgroundBsubmit">#}
+{#            <input type="hidden" id="BoardTiltX">#}
+{#            <input type="hidden" id="BoardTiltY">#}
+{#            <input type="submit" class="btn btn-primary" id="buttonThing" value="Save">#}
+{#        </form>#}
+{#    </div>#}
 
 {% endblock %}
