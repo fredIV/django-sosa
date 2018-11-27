@@ -18,9 +18,8 @@ body {
 	padding: 20px;
 }
 
-a {
-    margin: 10px;
-    width: 175px;
+small {
+	margin-top: 10px;
 }
 
 #home {
@@ -60,6 +59,5 @@ a {
 #myTable tr.header {
   background-color: #f1f1f1;
 }
-
 
 .show {display: block;}

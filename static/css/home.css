@@ -18,11 +18,11 @@ body {
 	padding: 20px;
 }
 
-img {
+#logo {
 	margin-bottom: 10px;
 }
 
-a {
+.btn-primary, .btn-danger {
     margin: 10px;
     width: 175px;
 }

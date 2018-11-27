@@ -1,6 +1,11 @@
 {% extends '_base.html' %}
+{% load static %}
 
 {% block title %}500 Server Error{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+{% endblock %}
 
 {% block content %}
 <h1>500 Server Error</h1>

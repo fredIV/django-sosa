@@ -1,9 +1,4 @@
 {% extends '_base.html' %}
-{#{% extends 'oldbase.html' %}#}
-
-{#TODO Joel#}
-
-{#TODO MERGE _base & oldbase with logout / login functionality from both#}
 
 {% load static %}
 
@@ -11,10 +6,10 @@
 	<link rel="stylesheet" href="{% static "css/home.css" %}">
 {% endblock %}
 
-{% block title %}Home page{% endblock title %}
+{% block title %}Home{% endblock title %}
 
 {% block content %}
-    <img src="{% static 'images/Psychology_image.png' %}" class="img-fluid" alt="psylogo launch" height="200" width="200"/>
+    <img src="{% static 'images/Psychology_image.png' %}" class="img-fluid" alt="SOSA Logo" height="200" width="200" id="logo"/>
     <h1>SOSA</h1>
     <p>Simultaneous Object and Subjective Assessment</p>
     <hr>
@@ -25,6 +20,5 @@
     <a href="/view_results" class="btn btn-primary">View Results</a>
     <!--TODO delete for production-->
     <a href="#" class="btn btn-danger">Experiment View</a>
-
 {% endblock content %}
 
