@@ -22,7 +22,7 @@ body {
 	margin-bottom: 10px;
 }
 
-.btn-primary, .btn-danger {
+.home-button{
     margin: 10px;
     width: 175px;
 }
