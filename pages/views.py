@@ -27,6 +27,10 @@ class BoardPageView(FormView):
     template_name = "../templates/pages/create_board.html"
     success_url = reverse_lazy('create_board')
 
+    def form_valid(self, form):
+        form.save()
+        return super(BoardPageView, self).form_valid(form)
+
 
 class StimSetListPageView(TemplateView):
     template_name = "pages/stim_sets.html"
