@@ -11,10 +11,13 @@
             <th>Your Boards</th>
         </tr>
         <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+        <!--Not a secure method; should filter boards BEFORE passing them to template-->
         {% for board in boards %}
-            <tr>
-                <td><button class="btn">{{ board.boardname }}</button></td>
-            </tr>
+            {% if board.user_id == user.id %}
+                <tr>
+                    <td><button class="btn">{{ board.boardname }}</button></td>
+                </tr>
+            {% endif %}
         {% endfor %}
     </table>
     <a href="create" class="btn btn-primary" id="createNew">Create New Board</a>
