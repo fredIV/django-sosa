@@ -1,30 +1,9 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
+from django.urls import reverse_lazy
+from urllib import request
 from django.shortcuts import render
-from .form import BoardForm
+from .forms import BoardForm
 from .models import *
-
-
-def add_board(request):
-    success = False
-
-    if request.method == "POST":
-        board_form = BoardForm(request.POST)
-
-        if board_form.is_valid():
-            success = True
-
-            boardname = board_form.cleaned_data['boardname']
-
-            new_board = Boards(boardname=boardname)
-            new_board.save()
-
-            new_board_form = BoardForm()
-            bfx2 = {'success':success, 'board_form': new_board_form}
-            return render('templates/pages/create_board.html', bfx2)
-    else:
-        board_form = BoardForm()
-    bf = {'board_form': board_form}
-    return render('templates/pages/create_board.html', bf)
 
 
 class HomePageView(TemplateView):
@@ -43,8 +22,14 @@ class BoardListPageView(TemplateView):
     template_name = "pages/board_list.html"
 
 
-class BoardPageView(TemplateView):
-    template_name = "pages/create_board.html"
+class BoardPageView(FormView):
+    form_class = BoardForm
+    template_name = "../templates/pages/create_board.html"
+    success_url = reverse_lazy('create_board')
+
+    def form_valid(self, form):
+        form.save()
+        return super(BoardPageView, self).form_valid(form)
 
 
 class StimSetListPageView(TemplateView):

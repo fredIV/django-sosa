@@ -49,18 +49,18 @@
 
      <script src="{% static "js/rbgValueGenerator.js" %}"></script>
 
-{#   <script>#}
-{#        function sendBoard() {#}
+   <script>
+        function sendBoard() {
             {#Maybe change this function to pull the right attribute#}
-{#            $("#BoardName").val($("#BoardNameSubmit").value);#}
-{#            $("#BoardRsubmit").val($("#BoardRvalue").value);#}
-{#            $("#BoardGsubmit").val($("#BoardGvalue").value);#}
-{#            $("#BoardBsubmit").val("value", $("#BoardBvalue").value);#}
-{#            $("#BackgroundRsubmit").val("value", $("#BackgroundRvalue").value);#}
-{#            $("#BackgroundBsubmit").val("value", $("#BackgroundBvalue").value);#}
-{#            $("#BackgroundGsubmit").val("value", $("#BackgroundGvalue").value);#}
-{#        }#}
-{#   </script>#}
+            $("#BoardName").val($("#BoardNameSubmit").value);
+            $("#BoardRsubmit").val($("#BoardRvalue").value);
+            $("#BoardGsubmit").val($("#BoardGvalue").value);
+            $("#BoardBsubmit").val("value", $("#BoardBvalue").value);
+            $("#BackgroundRsubmit").val("value", $("#BackgroundRvalue").value);
+            $("#BackgroundBsubmit").val("value", $("#BackgroundBvalue").value);
+            $("#BackgroundGsubmit").val("value", $("#BackgroundGvalue").value);
+        }
+   </script>
 
 
     {% if success %}
@@ -68,7 +68,7 @@
     {% endif %}
     <form method="post" action="">
         {% csrf_token %}
-        {{ form.boardname}}
+        {{ form}}
         <input type="submit" class="btn btn-primary" value="Save" id="create">
     </form>
 
