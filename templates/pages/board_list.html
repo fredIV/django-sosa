@@ -11,16 +11,11 @@
             <th>Your Boards</th>
         </tr>
         <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
-        <tr>
-            <td><a href="create">Board 1</a></td>
-        </tr>
-        <tr>
-            <td><a href="create">Board 2</a></td>
-        </tr>
-        <tr>
-            <td><a href="create">Board 3</a></td>
-        </tr>
-        <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+        {% for board in boards %}
+            <tr>
+                <td><button class="btn">{{ board.boardname }}</button></td>
+            </tr>
+        {% endfor %}
     </table>
     <a href="create" class="btn btn-primary" id="createNew">Create New Board</a>
 {% endblock %}

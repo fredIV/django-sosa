@@ -1,8 +1,8 @@
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 from django.urls import reverse_lazy
 from urllib import request
 from django.shortcuts import render
-from .forms import BoardForm, StimForm
+from .forms import *
 from .models import *
 
 
@@ -18,18 +18,21 @@ class LoginPageView(TemplateView):
     template_name = "account/login.html"
 
 
-class BoardListPageView(TemplateView):
+class BoardListPageView(ListView):
     template_name = "pages/board_list.html"
+    model = Boards
+    queryset = Boards.objects.all()
+    context_object_name = "boards"
 
 
-class BoardPageView(FormView):
+class BoardCreatePageView(FormView):
     form_class = BoardForm
     template_name = "../templates/pages/create_board.html"
-    success_url = reverse_lazy('create_board')
+    success_url = reverse_lazy('boards')
 
     def form_valid(self, form):
         form.save()
-        return super(BoardPageView, self).form_valid(form)
+        return super(BoardCreatePageView, self).form_valid(form)
 
 
 class StimSetListPageView(TemplateView):
@@ -52,6 +55,7 @@ class ViewResultsPageView(TemplateView):
 
 class CreateExperimentPageView(TemplateView):
     template_name = "pages/create_experiment.html"
+
 
 class ViewExperimentPageView(TemplateView):
     template_name = "pages/view_experiment.html"
