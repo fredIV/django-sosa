@@ -25,15 +25,20 @@ class Boards(models.Model):
         super(Boards, self).save(*args, **kwargs)
 
 
-TITLE_CHOICES = (
-    ('Cone.', 'CONE'),
-    ('Cylinder.', 'CYLINDER'),
-    ('Cube.', 'CUBE'),
-)
+class StimSets(models.Model):
+    stimsetid = models.AutoField(primary_key=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    stimsetname = models.CharField(max_length=96)
+
+    def __str__(self):
+        return self.stimsetname
+
+    def save(self, *args, **kwargs):
+        super(StimSets, self).save(*args, **kwargs)
 
 
 class Stims(models.Model):
-    stemsetid = models.AutoField(primary_key=True)
+    stimid = models.AutoField(primary_key=True)
     stimr = models.IntegerField(default=0)
     stimg = models.IntegerField(default=0)
     stimb = models.IntegerField(default=0)
@@ -41,10 +46,11 @@ class Stims(models.Model):
     labelr = models.IntegerField(default=0)
     labelg = models.IntegerField(default=0)
     labelb = models.IntegerField(default=0)
-    stimshape = models.CharField(max_length=25, blank=True, null=True, choices=TITLE_CHOICES)
+    stimshape = models.CharField(max_length=25, blank=True, null=True)
+    stimsetid = models.ForeignKey(StimSets, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.stimlabel
 
     def save(self, *args, **kwargs):
-        super(Boards, self).save(*args, **kwargs)
+        super(Stims, self).save(*args, **kwargs)

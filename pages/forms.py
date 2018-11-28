@@ -19,12 +19,20 @@ class BoardForm(ModelForm):
                    }
 
 
+class StimSetForm(ModelForm):
+
+    class Meta:
+        model = StimSets
+
+
+
 class StimForm(ModelForm):
 
     class Meta:
         model = Stims
         fields = '__all__'
-        widgets = {'stimr': HiddenInput(),
+        widgets = {'stimsetid': HiddenInput(),
+                   'stimr': HiddenInput(),
                    'stimg': HiddenInput(),
                    'stimb': HiddenInput(),
                    'labelr': HiddenInput(),

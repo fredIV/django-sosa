@@ -38,7 +38,7 @@ class StimSetListPageView(TemplateView):
 
 class StimSetPageView(FormView):
     form_class = StimForm
-    template_name = "pages/create_stimulus.html"
+    template_name = "../templates/pages/create_stimulus.html"
     success_url = reverse_lazy('create_stimulus')
 
     def form_valid(self, form):
