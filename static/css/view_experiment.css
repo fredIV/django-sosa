@@ -11,7 +11,7 @@ body {
 }
 
 .mx-auto {
-	width: 500px;
+	width: 800px;
 	margin: 20px;
 	background-color: #ffffff;
 	opacity: 0.8;
@@ -20,32 +20,4 @@ body {
 
 small {
     margin-top: 10px;
-}
-
-#logo {
-	margin-bottom: 10px;
-}
-
-.home-button{
-    margin: 10px;
-    width: 175px;
-}
-
-#home {
-	width: 60px;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-#settings {
-	width: 60px;
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-
-.drop-list {
-	width: auto;
-	margin: auto;
 }
