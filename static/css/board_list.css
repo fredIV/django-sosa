@@ -3,7 +3,7 @@
 body {
 	/*background: #7C3293;  !* fallback for old browsers *!*/
 	/*background: -webkit-linear-gradient(to right, #7C3293, #42538D);  !* Chrome 10-25, Safari 5.1-6 *!*/
-	background: linear-gradient(to right, #7C3293, #3C68D8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, #852897, #007aff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .container {
