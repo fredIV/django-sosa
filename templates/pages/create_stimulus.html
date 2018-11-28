@@ -37,6 +37,12 @@
             </div>
             <input type="text" class="form-control" id="stimulus_name" placeholder="Stimulus Name" oninput= "setNewLabel(this )">
 
+
+            <form method="post" action="">
+                {% csrf_token %}
+                {{ form }}
+            </form>
+
                 <button onclick="displayColorSliderLabel()" type="button" class="btn btn-secondary btn-shadow" id="labelBtn">Label</button>
                 <button onclick="displayColorSliderStimulus()" type="button" class="btn btn-secondary btn-shadow bg-primary" id="pegBtn">Peg</button>
 

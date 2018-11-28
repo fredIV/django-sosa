@@ -2,7 +2,7 @@ from django.views.generic import TemplateView, FormView
 from django.urls import reverse_lazy
 from urllib import request
 from django.shortcuts import render
-from .forms import BoardForm
+from .forms import BoardForm, StimForm
 from .models import *
 
 
@@ -36,8 +36,14 @@ class StimSetListPageView(TemplateView):
     template_name = "pages/stim_sets.html"
 
 
-class StimSetPageView(TemplateView):
+class StimSetPageView(FormView):
+    form_class = StimForm
     template_name = "pages/create_stimulus.html"
+    success_url = reverse_lazy('create_stimulus')
+
+    def form_valid(self, form):
+        form.save()
+        return super(StimSetPageView, self).form_valid(form)
 
 
 class ViewResultsPageView(TemplateView):
