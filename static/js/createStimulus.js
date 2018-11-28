@@ -185,12 +185,17 @@ function rgbToHex(rgb){
 $(document).ready(function() {
     $("#shapes").click(function() {
         var name = $("#shapes").val();
-
+        var r, g,b;
        if(name == "Cube") {
             pegScene.remove(mesh);
 
            peg = new THREE.CubeGeometry(10, 10, 10);
-        Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
+           r =rgbToHex(document.getElementById("RvalueStim").value);
+           g =rgbToHex(document.getElementById("GvalueStim").value);
+           b =rgbToHex(document.getElementById("BvalueStim").value);
+           Pegmaterial = new THREE.MeshPhongMaterial({ color: "#"+r+""+g+""+b, shininess: 30 });
+
+       // Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
         mesh = new THREE.Mesh( peg, Pegmaterial );
         mesh.position.set(0,0,10);
         pegScene.add(mesh);
@@ -198,7 +203,12 @@ $(document).ready(function() {
        else if (name == "Cylinder") {
              pegScene.remove(mesh);
             peg = new THREE.CylinderGeometry( 5, 5, 15, 100 );
-        Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
+           r =rgbToHex(document.getElementById("RvalueStim").value);
+           g =rgbToHex(document.getElementById("GvalueStim").value);
+           b =rgbToHex(document.getElementById("BvalueStim").value);
+           Pegmaterial = new THREE.MeshPhongMaterial({ color: "#"+r+""+g+""+b, shininess: 30 });
+
+       // Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
         mesh = new THREE.Mesh( peg, Pegmaterial );
         mesh.position.set(0,0,10);
         pegScene.add(mesh);
@@ -207,7 +217,12 @@ $(document).ready(function() {
        else if (name == "Cone") {
             pegScene.remove(mesh);
             peg = new THREE.CylinderGeometry( 0, 9, 12, 15, 1  );
-        Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
+            r =rgbToHex(document.getElementById("RvalueStim").value);
+           g =rgbToHex(document.getElementById("GvalueStim").value);
+           b =rgbToHex(document.getElementById("BvalueStim").value);
+           Pegmaterial = new THREE.MeshPhongMaterial({ color: "#"+r+""+g+""+b, shininess: 30 });
+
+        //Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
         mesh = new THREE.Mesh( peg, Pegmaterial );
         mesh.position.set(0,0,10);
         pegScene.add(mesh);
