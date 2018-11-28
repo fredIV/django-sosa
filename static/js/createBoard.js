@@ -255,9 +255,10 @@ function setBoardCoverRGB(){
    function myFunction(c) {
 
        $(document).ready(function () {
+         $(c).prop('disabled', true);
              //  var name = $("#myTable").attr('class');
           // console.log($(c).attr('class'));
-                if ($(c).text()== "Stim")
+           if ($(c).text()== "Stim")
            {
                var peg = new THREE.CubeGeometry(1, 1, 1);
                var Pegmaterial = new THREE.MeshPhongMaterial({color: 0x000000, shininess: 30});
