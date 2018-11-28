@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm, HiddenInput
-from .models import Boards, Stims
+from .models import *
 
 
 class BoardForm(ModelForm):
@@ -8,7 +8,8 @@ class BoardForm(ModelForm):
     class Meta:
         model = Boards
         fields = '__all__'
-        widgets = {'boardr': HiddenInput(),
+        widgets = {'user': HiddenInput(),
+                   'boardr': HiddenInput(),
                    'boardg': HiddenInput(),
                    'boardb': HiddenInput(),
                    'boardtiltx': HiddenInput(),
@@ -23,7 +24,7 @@ class StimSetForm(ModelForm):
 
     class Meta:
         model = StimSets
-
+        fields = '__all__'
 
 
 class StimForm(ModelForm):
