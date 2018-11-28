@@ -34,8 +34,8 @@ function initBoard() {
   // CONTROLS
   BoardControl = new THREE.OrbitControls( BoardCamera, BoardRenderer.domElement );
   var dragControls = new THREE.DragControls( objects, BoardCamera, BoardRenderer.domElement );
-				dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = false; } );
-				dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true; } );
+				dragControls.addEventListener( 'dragstart', function ( event ) { BoardControl.enabled = false; } );
+				dragControls.addEventListener( 'dragend', function ( event ) { BoardControl.enabled = true; } );
 
 
   // LIGHT
