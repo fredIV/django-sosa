@@ -1,5 +1,61 @@
-window.onload = fillFilterOptions;
+window.onload = function () {
+    runFirst("boards");
+    runFirst("stimuli");
+};
 
+function runFirst(name) {
+    var tbl = document.getElementById(name);
+
+    if (tbl != null) {
+        //rows
+        for (var i = 1; i < tbl.rows.length; i++) {
+            //column
+            for (var j = 0; j < tbl.rows[i].cells.length; j++) {
+
+                tbl.rows[i].cells[j].style.backgroundColor = "#ffffff"; //------------------change to background color / original
+
+                tbl.rows[i].cells[j].onclick = function () {
+
+                    for (var i = 1; i < tbl.rows.length; i++) {
+                        //check all other cells in the column for any other's selected and revert the color back to the original color.
+                        if (tbl.rows[i].cells[this.cellIndex].style.backgroundColor = "#e0e0e0") {
+                            tbl.rows[i].cells[this.cellIndex].style.backgroundColor = "#ffffff"; //------------------change to background color / original
+                        }
+                    }
+                    this.style.backgroundColor = "#e0e0e0";
+
+
+                    getval(this);
+
+                };
+            }
+
+        }
+
+    }
+}
+		//var boardHit;
+		//var stimSetHit;
+
+        function getval(cel) {
+
+			if(cel != null){
+
+				//Column 0 is the boards
+			/*	if(cel.cellIndex == 0){  //cellIndex -> returns column number
+					boardHit = cel.innerHTML;
+				}else if(cel.cellIndex == 1){
+				//Column 1 is the stimuli sets
+					stimSetHit = cel.innerHTML;
+				}
+            */
+				//alert(cel.innerHTML + "");//cel);
+			}
+        }
+
+
+
+/*
 //This function filters the results of the table based on what is selected in the dropdown.
 function filterResults() {
 var selectedValue = document.getElementById("myDropdown").value;
@@ -85,4 +141,4 @@ function getval(cel) {
 
 				alert(cel.innerHTML + "");
 			}
-        }
+        }*/

@@ -46,3 +46,6 @@ class ViewResultsPageView(TemplateView):
 
 class CreateExperimentPageView(TemplateView):
     template_name = "pages/create_experiment.html"
+
+class ViewExperimentPageView(TemplateView):
+    template_name = "pages/view_experiment.html"

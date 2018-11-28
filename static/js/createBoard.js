@@ -1,6 +1,10 @@
 var BoardContainer, BoardScene, BoardCamera, BoardRenderer, BoardControl, Boardmaterial, skyBoxMaterial, BoardCoverBool, BoardCoverColor, BoardColor;
 var BoardMesh;
 
+var objects = [];
+
+
+
 BoardCoverBool = false;
 BoardCoverColor = "0x0000FF";
 initBoard();
@@ -29,6 +33,9 @@ function initBoard() {
   BoardContainer.appendChild( BoardRenderer.domElement );
   // CONTROLS
   BoardControl = new THREE.OrbitControls( BoardCamera, BoardRenderer.domElement );
+  var dragControls = new THREE.DragControls( objects, BoardCamera, BoardRenderer.domElement );
+				dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = false; } );
+				dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true; } );
 
 
   // LIGHT
@@ -94,6 +101,7 @@ function initBoard() {
   BoardSide.rotation.y = -Math.PI / 2 * 3;
   BoardSide.position.set(12, 0, - 0.5);
   BoardScene.add(BoardSide);
+
 
 
 }
@@ -201,3 +209,21 @@ function setBoardCoverRGB(){
     BoardMesh.material.map = null;
     BoardMesh.needsUpdate = true;
   }
+
+   function myFunction(c) {
+
+       $(document).ready(function () {
+             //  var name = $("#myTable").attr('class');
+          // console.log($(c).attr('class'));
+                if ($(c).text()== "Stim")
+           {
+               var peg = new THREE.CubeGeometry(1, 1, 1);
+               var Pegmaterial = new THREE.MeshPhongMaterial({color: 0x000000, shininess: 30});
+               var mesh = new THREE.Mesh(peg, Pegmaterial);
+               mesh.position.set(0, 0, 10);
+               BoardScene.add(mesh);
+               objects.push(mesh);
+
+           }
+       })
+   }
