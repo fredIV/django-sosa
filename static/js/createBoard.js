@@ -2,7 +2,7 @@ var BoardContainer, BoardScene, BoardCamera, BoardRenderer, BoardControl, Boardm
 var BoardMesh;
 
 var objects = [];
-
+var objectOnBoard = [];
 
 
 BoardCoverBool = false;
@@ -129,6 +129,7 @@ function rgbToHex(rgb){
 function animateBoard()
 {
   requestAnimationFrame( animateBoard );
+  boardLock();
   BoardControl.update();
   BoardRenderer.render( BoardScene, BoardCamera );
 
@@ -210,6 +211,47 @@ function setBoardCoverRGB(){
     BoardMesh.needsUpdate = true;
   }
 
+  function boardLock() {
+
+
+				for (var i = 0; i < objects.length; i++) {
+
+
+					if (objects[i].position.y <= 12 && objects[i].position.y >= -12 && objects[i].position.x <= 12 && objects[i].position.x >= -12) {
+
+						objectOnBoard[i] = true;
+
+					}
+
+					if (objectOnBoard[i] == true) {
+
+					if (objects[i].position.x < -12) {
+
+						objects[i].position.x = -12;
+					}
+
+					if (objects[i].position.x > 12) {
+
+						objects[i].position.x = 12;
+					}
+
+					if (objects[i].position.y < -12) {
+
+						objects[i].position.y = -12;
+					}
+
+					if (objects[i].position.y > 12) {
+
+						objects[i].position.y = 12;
+					}
+
+					objects[i].position.z = 1;
+
+					}
+
+					}
+				};
+
    function myFunction(c) {
 
        $(document).ready(function () {
@@ -220,9 +262,10 @@ function setBoardCoverRGB(){
                var peg = new THREE.CubeGeometry(1, 1, 1);
                var Pegmaterial = new THREE.MeshPhongMaterial({color: 0x000000, shininess: 30});
                var mesh = new THREE.Mesh(peg, Pegmaterial);
-               mesh.position.set(0, 0, 10);
+               mesh.position.set(0, 0, 1);
                BoardScene.add(mesh);
                objects.push(mesh);
+               objectOnBoard.push(false);
 
            }
        })
