@@ -70,9 +70,6 @@
         });
    </script>
 
-    {% if success %}
-        <h3> Board Added Successfully</h3>
-    {% endif %}
     <form method="post" action="">
         {% csrf_token %}
         {{ form }}
