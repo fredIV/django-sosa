@@ -127,13 +127,13 @@ function rgbToHex(rgb) {
         hex = "0" + hex;
     }
     return hex;
+}
 
-    function fullColorHex(r, g, b) {
-        var red = rgbToHex(r);
-        var green = rgbToHex(g);
-        var blue = rgbToHex(b);
-        return red + green + blue;
-    }
+function fullColorHex(r, g, b) {
+    var red = rgbToHex(r);
+    var green = rgbToHex(g);
+    var blue = rgbToHex(b);
+    return red + green + blue;
 }
 
 
@@ -265,22 +265,45 @@ function boardLock() {
 
     }
 }
-function myFunction(c) {
+function stimToBoard(button, stimr, stimg, stimb, stimshape) {
 
     $(document).ready(function () {
-        $(c).prop('disabled', true);
-        //  var name = $("#myTable").attr('class');
-        // console.log($(c).attr('class'));
-        if ($(c).text() == "Stim") {
-            var peg = new THREE.CubeGeometry(1, 1, 1);
-            var Pegmaterial = new THREE.MeshPhongMaterial({color: 0x000000, shininess: 30});
-            var mesh = new THREE.Mesh(peg, Pegmaterial);
-            mesh.position.set(0, 0, 1);
+        $(button).attr('disabled', true);
+
+        var peg, color, Pegmaterial, mesh;
+
+        if (stimshape === "Cube") {
+            peg = new THREE.CubeGeometry(1, 1, 1);
+            color = new THREE.Color("rgb(" + stimr + ", " + stimg + ", " + stimb + ")");
+            Pegmaterial = new THREE.MeshPhongMaterial({color: color, shininess: 30});
+            mesh = new THREE.Mesh(peg, Pegmaterial);
+            mesh.position.set(-12, 12, 1);
             BoardScene.add(mesh);
             objects.push(mesh);
             objectOnBoard.push(false);
             objectPosition.push(mesh.position);
-
+        }
+        if (stimshape === "Cylinder") {
+            peg = new THREE.CylinderGeometry(0.5, 0.5, 1, 64);
+            color = new THREE.Color("rgb(" + stimr + ", " + stimg + ", " + stimb + ")");
+            Pegmaterial = new THREE.MeshPhongMaterial({color: color, shininess: 30});
+            mesh = new THREE.Mesh(peg, Pegmaterial);
+            mesh.position.set(-12, 12, 1);
+            BoardScene.add(mesh);
+            objects.push(mesh);
+            objectOnBoard.push(false);
+            objectPosition.push(mesh.position);
+        }
+        if (stimshape === "Cone") {
+            peg = new THREE.CylinderGeometry(0, 0.5, 1, 64);
+            color = new THREE.Color("rgb(" + stimr + ", " + stimg + ", " + stimb + ")");
+            Pegmaterial = new THREE.MeshPhongMaterial({color: color, shininess: 30});
+            mesh = new THREE.Mesh(peg, Pegmaterial);
+            mesh.position.set(-12, 12, 1);
+            BoardScene.add(mesh);
+            objects.push(mesh);
+            objectOnBoard.push(false);
+            objectPosition.push(mesh.position);
         }
     })
 }
