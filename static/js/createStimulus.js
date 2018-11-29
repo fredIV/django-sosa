@@ -7,228 +7,222 @@ animatePeg();
 // FUNCTIONS
 function initPeg() {
 // SCENE
-pegScene = new THREE.Scene();
+    pegScene = new THREE.Scene();
 
 // CAMERA
-var SCREEN_WIDTH = 300, SCREEN_HEIGHT = 250;
-var VIEW_ANGLE = 6, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
-pegCamera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
-pegScene.add(pegCamera);
-pegCamera.position.set(0,50,400);
-pegCamera.lookAt(pegScene.position);
+    var SCREEN_WIDTH = 300, SCREEN_HEIGHT = 250;
+    var VIEW_ANGLE = 6, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
+    pegCamera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+    pegScene.add(pegCamera);
+    pegCamera.position.set(0, 50, 400);
+    pegCamera.lookAt(pegScene.position);
 
 // RENDERER
-if ( Detector.webgl ) {
-  pegRenderer = new THREE.WebGLRenderer( {antialias:true} );
-} else {
-  pegRenderer = new THREE.CanvasRenderer();
-}
+    if (Detector.webgl) {
+        pegRenderer = new THREE.WebGLRenderer({antialias: true});
+    } else {
+        pegRenderer = new THREE.CanvasRenderer();
+    }
 
-pegRenderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-pegContainer = document.getElementById( 'ThreeJSPeg' );
-pegContainer.appendChild( pegRenderer.domElement );
+    pegRenderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+    pegContainer = document.getElementById('ThreeJSPeg');
+    pegContainer.appendChild(pegRenderer.domElement);
 // CONTROLS
-pegControls = new THREE.OrbitControls( pegCamera, pegRenderer.domElement );
-pegControls.noTilt = true;
-pegControls.noRotate = true;
-pegControls.noZoom = true;
+    pegControls = new THREE.OrbitControls(pegCamera, pegRenderer.domElement);
+    pegControls.noTilt = true;
+    pegControls.noRotate = true;
+    pegControls.noZoom = true;
 
 // LIGHT
-hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
-hemiLight.color.setHSL( 0.6, 1, 0.6 );
-hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
-hemiLight.position.set( 0, 50, 0 );
-pegScene.add( hemiLight );
+    hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6);
+    hemiLight.color.setHSL(0.6, 1, 0.6);
+    hemiLight.groundColor.setHSL(0.095, 1, 0.75);
+    hemiLight.position.set(0, 50, 0);
+    pegScene.add(hemiLight);
 
-dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
-dirLight.color.setHSL( 0.1, 1, 0.95 );
-dirLight.position.set( -1, 1.75, 1 );
-dirLight.position.multiplyScalar( 30 );
-pegScene.add( dirLight );
+    dirLight = new THREE.DirectionalLight(0xffffff, 1);
+    dirLight.color.setHSL(0.1, 1, 0.95);
+    dirLight.position.set(-1, 1.75, 1);
+    dirLight.position.multiplyScalar(30);
+    pegScene.add(dirLight);
 
 // SKYBOX/FOG
-var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
-var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, side: THREE.BackSide } );
-var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
-pegScene.add(skyBox);
+    var skyBoxGeometry = new THREE.CubeGeometry(10000, 10000, 10000);
+    var skyBoxMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF, side: THREE.BackSide});
+    var skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxMaterial);
+    pegScene.add(skyBox);
 
 //peg
-peg = new THREE.CylinderGeometry( 5, 5, 15, 100 );
-Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
-mesh = new THREE.Mesh( peg, Pegmaterial );
-mesh.position.set(0,0,10);
-pegScene.add(mesh);
+    peg = new THREE.CylinderGeometry(5, 5, 15, 100);
+    Pegmaterial = new THREE.MeshPhongMaterial({color: 0x000000, shininess: 30});
+    mesh = new THREE.Mesh(peg, Pegmaterial);
+    mesh.position.set(0, 0, 10);
+    pegScene.add(mesh);
 
-pegLabelSprite = makeTextSprite( " Label ", { fontsize: 32 } );
-pegLabelSprite.position = mesh.position.clone();
-pegLabelSprite.position.x = 13;
-pegLabelSprite.position.y = 4;
-pegScene.add( pegLabelSprite );
+    pegLabelSprite = makeTextSprite(" Label ", {fontsize: 32});
+    pegLabelSprite.position = mesh.position.clone();
+    pegLabelSprite.position.x = 13;
+    pegLabelSprite.position.y = 4;
+    pegScene.add(pegLabelSprite);
 }
 
 //creating a new Label for the object by deleting the current one and replacing it.
-function setNewLabel(name)
-{
-pegScene.remove(pegLabelSprite);
-pegLabelSprite = makeTextSprite(name.value, { fontsize: 32} );
-pegLabelSprite.position = mesh.position.clone();
-pegLabelSprite.position.x = 13;
-pegLabelSprite.position.y = 4;
-pegScene.add(pegLabelSprite);
+function setNewLabel(name) {
+    pegScene.remove(pegLabelSprite);
+    pegLabelSprite = makeTextSprite(name.value, {fontsize: 32});
+    pegLabelSprite.position = mesh.position.clone();
+    pegLabelSprite.position.x = 13;
+    pegLabelSprite.position.y = 4;
+    pegScene.add(pegLabelSprite);
 }
 
-function setLabelValue(value)
-{
-pegScene.remove(pegLabelSprite);
-pegLabelSprite = makeTextSprite(value, { fontsize: 32} );
-pegLabelSprite.position = mesh.position.clone();
-pegLabelSprite.position.x = 13;
-pegLabelSprite.position.y = 4;
-pegScene.add(pegLabelSprite);
+function setLabelValue(value) {
+    pegScene.remove(pegLabelSprite);
+    pegLabelSprite = makeTextSprite(value, {fontsize: 32});
+    pegLabelSprite.position = mesh.position.clone();
+    pegLabelSprite.position.x = 13;
+    pegLabelSprite.position.y = 4;
+    pegScene.add(pegLabelSprite);
 }
 
-function makeTextSprite( message, parameters ) {
-if ( parameters === undefined ) parameters = {};
+function makeTextSprite(message, parameters) {
+    if (parameters === undefined) parameters = {};
 
-var fontface = parameters.hasOwnProperty("fontface") ?
-parameters["fontface"] : "Arial";
+    var fontface = parameters.hasOwnProperty("fontface") ?
+        parameters["fontface"] : "Arial";
 
-var fontsize = parameters.hasOwnProperty("fontsize") ?
-parameters["fontsize"] : 18;
+    var fontsize = parameters.hasOwnProperty("fontsize") ?
+        parameters["fontsize"] : 18;
 
-var borderThickness = parameters.hasOwnProperty("borderThickness") ?
-parameters["borderThickness"] : 4;
+    var borderThickness = parameters.hasOwnProperty("borderThickness") ?
+        parameters["borderThickness"] : 4;
 
-var backgroundColor = parameters.hasOwnProperty("backgroundColor") ?
-parameters["backgroundColor"] : { r:255, g:255, b:255, a:0 };
+    var backgroundColor = parameters.hasOwnProperty("backgroundColor") ?
+        parameters["backgroundColor"] : {r: 255, g: 255, b: 255, a: 0};
 
-var canvas = document.createElement('canvas');
-context = canvas.getContext('2d');
-context.font = "Bold " + fontsize + "px " + fontface;
+    var canvas = document.createElement('canvas');
+    context = canvas.getContext('2d');
+    context.font = "Bold " + fontsize + "px " + fontface;
 
 // get size data (height depends only on font size)
-var metrics = context.measureText( message );
-var textWidth = metrics.width;
+    var metrics = context.measureText(message);
+    var textWidth = metrics.width;
 
 // text color
-context.fillStyle = "rgba(255, 255, 255, 1.0)";
+    context.fillStyle = "rgba(255, 255, 255, 1.0)";
 
-context.fillText( message, borderThickness, fontsize + borderThickness);
+    context.fillText(message, borderThickness, fontsize + borderThickness);
 
 // canvas contents will be used for a texture
-var texture = new THREE.Texture(canvas)
-texture.needsUpdate = true;
+    var texture = new THREE.Texture(canvas);
+    texture.needsUpdate = true;
 
-spriteMaterial = new THREE.SpriteMaterial( { map: texture, useScreenCoordinates: false} );
-spriteMaterial.color.setHex("0x000000");
-var sprite = new THREE.Sprite( spriteMaterial );
-sprite.scale.set(400,200,1.0);
-return sprite;
+    spriteMaterial = new THREE.SpriteMaterial({map: texture, useScreenCoordinates: false});
+    spriteMaterial.color.setHex("0x000000");
+    var sprite = new THREE.Sprite(spriteMaterial);
+    sprite.scale.set(400, 200, 1.0);
+    return sprite;
 }
 
 function animatePeg() {
-requestAnimationFrame( animatePeg );
-pegControls.update();
-pegRenderer.render( pegScene, pegCamera);
+    requestAnimationFrame(animatePeg);
+    pegControls.update();
+    pegRenderer.render(pegScene, pegCamera);
 }
 
 
-function setPegRGB()
-{
+function setPegRGB() {
     var redHex = rgbToHex(document.getElementById("RvalueStim").value);
-var greenHex = rgbToHex(document.getElementById("GvalueStim").value);
-var blueHex = rgbToHex(document.getElementById("BvalueStim").value);
-var stringHex = "0x" + redHex + greenHex + blueHex;
-Pegmaterial.color.setHex(stringHex);
+    var greenHex = rgbToHex(document.getElementById("GvalueStim").value);
+    var blueHex = rgbToHex(document.getElementById("BvalueStim").value);
+    var stringHex = "0x" + redHex + greenHex + blueHex;
+    Pegmaterial.color.setHex(stringHex);
 
 }
 
-function setPeg(r,g,b) {
-  var redHex = rgbToHex(r);
-  var greenHex = rgbToHex(g);
-  var blueHex = rgbToHex(b);
-  var stringHex = "0x" + redHex + greenHex + blueHex;
-  Pegmaterial.color.setHex(stringHex);
+function setPeg(r, g, b) {
+    var redHex = rgbToHex(r);
+    var greenHex = rgbToHex(g);
+    var blueHex = rgbToHex(b);
+    var stringHex = "0x" + redHex + greenHex + blueHex;
+    Pegmaterial.color.setHex(stringHex);
 }
 
-function setLabel(r,g,b) {
-  var redHex = rgbToHex(r);
-  var greenHex = rgbToHex(g);
-  var blueHex = rgbToHex(b);
-  var stringHex = "0x" + redHex + greenHex + blueHex;
-  spriteMaterial.color.setHex(stringHex);
+function setLabel(r, g, b) {
+    var redHex = rgbToHex(r);
+    var greenHex = rgbToHex(g);
+    var blueHex = rgbToHex(b);
+    var stringHex = "0x" + redHex + greenHex + blueHex;
+    spriteMaterial.color.setHex(stringHex);
 }
 
-function setLabelRGB(){
-var redHex = rgbToHex(document.getElementById("lRvalueStim").value);
-var greenHex = rgbToHex(document.getElementById("lGvalueStim").value);
-var blueHex = rgbToHex(document.getElementById("lBvalueStim").value);
-var stringHex = "0x" + redHex + greenHex + blueHex;
-spriteMaterial.color.setHex(stringHex);
+function setLabelRGB() {
+    var redHex = rgbToHex(document.getElementById("lRvalueStim").value);
+    var greenHex = rgbToHex(document.getElementById("lGvalueStim").value);
+    var blueHex = rgbToHex(document.getElementById("lBvalueStim").value);
+    var stringHex = "0x" + redHex + greenHex + blueHex;
+    spriteMaterial.color.setHex(stringHex);
 }
 
-function rgbToHex(rgb){
-  var hex = Number(rgb).toString(16);
-  if (hex.length < 2) {
-    hex = "0" + hex;
-  }
-  return hex;
+function rgbToHex(rgb) {
+    var hex = Number(rgb).toString(16);
+    if (hex.length < 2) {
+        hex = "0" + hex;
+    }
+    return hex;
 
-  function fullColorHex(r,g,b){
-    var red = rgbToHex(r);
-    var green = rgbToHex(g);
-    var blue = rgbToHex(b);
-    return red+green+blue;
-  }
+    function fullColorHex(r, g, b) {
+        var red = rgbToHex(r);
+        var green = rgbToHex(g);
+        var blue = rgbToHex(b);
+        return red + green + blue;
+    }
 }
 
-$(document).ready(function() {
-    $("#shapes").click(function() {
+$(document).ready(function () {
+    $("#shapes").click(function () {
         var name = $("#shapes").val();
-        var r, g,b;
-       if(name == "Cube") {
+        var r, g, b;
+        if (name == "Cube") {
             pegScene.remove(mesh);
 
-           peg = new THREE.CubeGeometry(10, 10, 10);
-           r =rgbToHex(document.getElementById("RvalueStim").value);
-           g =rgbToHex(document.getElementById("GvalueStim").value);
-           b =rgbToHex(document.getElementById("BvalueStim").value);
-           Pegmaterial = new THREE.MeshPhongMaterial({ color: "#"+r+""+g+""+b, shininess: 30 });
+            peg = new THREE.CubeGeometry(10, 10, 10);
+            r = rgbToHex(document.getElementById("RvalueStim").value);
+            g = rgbToHex(document.getElementById("GvalueStim").value);
+            b = rgbToHex(document.getElementById("BvalueStim").value);
+            Pegmaterial = new THREE.MeshPhongMaterial({color: "#" + r + "" + g + "" + b, shininess: 30});
 
-       // Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
-        mesh = new THREE.Mesh( peg, Pegmaterial );
-        mesh.position.set(0,0,10);
-        pegScene.add(mesh);
-       }
-       else if (name == "Cylinder") {
-             pegScene.remove(mesh);
-            peg = new THREE.CylinderGeometry( 5, 5, 15, 100 );
-           r =rgbToHex(document.getElementById("RvalueStim").value);
-           g =rgbToHex(document.getElementById("GvalueStim").value);
-           b =rgbToHex(document.getElementById("BvalueStim").value);
-           Pegmaterial = new THREE.MeshPhongMaterial({ color: "#"+r+""+g+""+b, shininess: 30 });
-
-       // Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
-        mesh = new THREE.Mesh( peg, Pegmaterial );
-        mesh.position.set(0,0,10);
-        pegScene.add(mesh);
-       }
-
-       else if (name == "Cone") {
+            // Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
+            mesh = new THREE.Mesh(peg, Pegmaterial);
+            mesh.position.set(0, 0, 10);
+            pegScene.add(mesh);
+        } else if (name == "Cylinder") {
             pegScene.remove(mesh);
-            peg = new THREE.CylinderGeometry( 0, 9, 12, 15, 1  );
-            r =rgbToHex(document.getElementById("RvalueStim").value);
-           g =rgbToHex(document.getElementById("GvalueStim").value);
-           b =rgbToHex(document.getElementById("BvalueStim").value);
-           Pegmaterial = new THREE.MeshPhongMaterial({ color: "#"+r+""+g+""+b, shininess: 30 });
+            peg = new THREE.CylinderGeometry(5, 5, 15, 100);
+            r = rgbToHex(document.getElementById("RvalueStim").value);
+            g = rgbToHex(document.getElementById("GvalueStim").value);
+            b = rgbToHex(document.getElementById("BvalueStim").value);
+            Pegmaterial = new THREE.MeshPhongMaterial({color: "#" + r + "" + g + "" + b, shininess: 30});
 
-        //Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
-        mesh = new THREE.Mesh( peg, Pegmaterial );
-        mesh.position.set(0,0,10);
-        pegScene.add(mesh);
+            // Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
+            mesh = new THREE.Mesh(peg, Pegmaterial);
+            mesh.position.set(0, 0, 10);
+            pegScene.add(mesh);
+        } else if (name == "Cone") {
+            pegScene.remove(mesh);
+            peg = new THREE.CylinderGeometry(0, 9, 12, 15, 1);
+            r = rgbToHex(document.getElementById("RvalueStim").value);
+            g = rgbToHex(document.getElementById("GvalueStim").value);
+            b = rgbToHex(document.getElementById("BvalueStim").value);
+            Pegmaterial = new THREE.MeshPhongMaterial({color: "#" + r + "" + g + "" + b, shininess: 30});
 
-       }
+            //Pegmaterial = new THREE.MeshPhongMaterial({ color: 0x000000, shininess: 30 });
+            mesh = new THREE.Mesh(peg, Pegmaterial);
+            mesh.position.set(0, 0, 10);
+            pegScene.add(mesh);
+
+        }
     })
-})
+});
 
 

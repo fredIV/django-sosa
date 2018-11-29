@@ -8,15 +8,18 @@
 {% block title %}Log in{% endblock %}
 
 {% block content %}
-    <img src="{% static 'images/Psychology_image.png' %}" class="img-fluid" alt="psylogo launch" height="200" width="200" id="logo"/>
+    <img src="{% static 'images/Psychology_image.png' %}" class="img-fluid" alt="psylogo launch" height="200"
+         width="200" id="logo"/>
     <h2>Welcome to SOSA!</h2>
-    <small>This login page is for administrators. To participate in an experiment, click the test link that you were given by an administrator.</small>
+    <small>This login page is for administrators. To participate in an experiment, click the test link that you were
+        given by an administrator.
+    </small>
 
-<form method="post" id="login-form">
-  {% csrf_token %}
-  {{ form|crispy }}
-  <button class="btn btn-primary" type="submit">Log in</button>
-</form>
+    <form method="post" id="login-form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary" type="submit">Log in</button>
+    </form>
 
-<a href="{% url 'account_reset_password' %}">Forgot Password?</a>
+    <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
 {% endblock content %}

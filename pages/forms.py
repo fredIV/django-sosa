@@ -4,7 +4,6 @@ from .models import *
 
 
 class BoardForm(ModelForm):
-
     class Meta:
         model = Boards
         fields = '__all__'
@@ -21,7 +20,6 @@ class BoardForm(ModelForm):
 
 
 class BoardEditForm(ModelForm):
-
     class Meta:
         model = Boards
         fields = ['boardname',
@@ -46,7 +44,6 @@ class BoardEditForm(ModelForm):
 
 
 class StimSetForm(ModelForm):
-
     class Meta:
         model = StimSets
         fields = "__all__"
@@ -54,7 +51,6 @@ class StimSetForm(ModelForm):
 
 
 class StimForm(ModelForm):
-
     class Meta:
         model = Stims
         fields = '__all__'
