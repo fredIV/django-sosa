@@ -4,6 +4,7 @@ from urllib import request
 from django.shortcuts import render
 from .forms import *
 from .models import *
+from django.conf import settings
 
 
 class HomePageView(TemplateView):

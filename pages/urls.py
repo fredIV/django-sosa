@@ -1,10 +1,12 @@
-from django.urls import path
+from django.urls import path, re_path
 
+from django.conf.urls import url
 from .views import *
 
 urlpatterns = [
     path('', LoginPageView.as_view(), name='login'),
     path('home/', HomePageView.as_view(), name='home'),
+    # url(r'^experiment/$', 'pages.views.delete_object', name="delete_obj"),
     path('about/', AboutPageView.as_view(), name='about'),
     path('boards/', BoardListPageView.as_view(), name='boards'),
     path('stimsets/', StimSetListPageView.as_view(), name='stimsets'),
