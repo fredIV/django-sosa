@@ -1,63 +1,65 @@
 /* Inspired by Sunil Rajput at Bootsnipp */
 
 body {
-	/*background: #7C3293;  !* fallback for old browsers *!*/
-	/*background: -webkit-linear-gradient(to right, #7C3293, #42538D);  !* Chrome 10-25, Safari 5.1-6 *!*/
-	background: linear-gradient(to right, #852897, #007aff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*background: #7C3293;  !* fallback for old browsers *!*/
+    /*background: -webkit-linear-gradient(to right, #7C3293, #42538D);  !* Chrome 10-25, Safari 5.1-6 *!*/
+    background: linear-gradient(to right, #852897, #007aff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .container {
-	align-content: center;
+    align-content: center;
 }
 
 .mx-auto {
-	width: 700px;
-	margin: 20px;
-	background-color: #ffffff;
-	opacity: 0.8;
-	padding: 20px;
+    width: 700px;
+    margin: 20px;
+    background-color: #ffffff;
+    opacity: 0.8;
+    padding: 20px;
 }
 
 small {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 #home {
-	width: 60px;
-	position: absolute;
-	top: 0;
-	left: 0;
+    width: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #settings {
-	width: 60px;
-	position: absolute;
-	top: 0;
-	right: 0;
+    width: 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .drop-list {
-	width: auto;
-	margin: auto;
+    width: auto;
+    margin: auto;
 }
 
 #myTable {
-  border-collapse: collapse;
-  border: 1px solid #ddd;
-  font-size: 18px;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    font-size: 18px;
 }
 
 #myTable th, #myTable td {
-  text-align: left;
-  padding: 12px;
+    text-align: left;
+    padding: 12px;
 }
 
 #myTable tr {
-  border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 #myTable tr.header {
-  background-color: #f1f1f1;
+    background-color: #f1f1f1;
 }
 
-.show {display: block;}
+.show {
+    display: block;
+}

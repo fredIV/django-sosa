@@ -2,6 +2,7 @@ from django.db import models
 from users.models import CustomUser
 from django.forms import ModelForm
 
+
 # Create your models here.
 
 

@@ -36,18 +36,18 @@ function runFirst(name) {
 }
 
 
-        function getval(cel, tableName) {
+function getval(cel, tableName) {
 
-			if(cel != null){
-				 //if tableName == "boards" it is a board, if it is == "stimuli" it is a stimuli set
+    if (cel != null) {
+        //if tableName == "boards" it is a board, if it is == "stimuli" it is a stimuli set
 
-                if(tableName == "boards"){
-                    //database
-                    //cel.innerHTML
-                }else{
-                    //database
+        if (tableName == "boards") {
+            //database
+            //cel.innerHTML
+        } else {
+            //database
 
-                }
-
-			}
         }
+
+    }
+}
