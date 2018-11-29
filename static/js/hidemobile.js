@@ -1,5 +1,5 @@
 function hideMobile() {
-    var width = window.matchMedia("(max-width: 900px)");
+    var width = window.matchMedia("(max-width: 1200px)");
     if (width.matches) {
         var container = document.getElementById("mx-auto");
         while (container.firstChild) {
