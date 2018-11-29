@@ -95,9 +95,9 @@ class CreateExperimentPageView(ListView):
     def get_context_data(self, **kwargs):
         context = super(CreateExperimentPageView, self).get_context_data(**kwargs)
         context['stimsets'] = StimSets.objects.all()
+        context['stimuli'] = Stims.objects.all()
         # And so on for more models
         return context
-
 
 
 class ViewExperimentPageView(TemplateView):
