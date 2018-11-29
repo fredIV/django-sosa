@@ -3,6 +3,7 @@ var BoardMesh;
 
 var objects = [];
 var objectOnBoard = [];
+var objectPosition = [];
 
 
 BoardCoverBool = false;
@@ -273,6 +274,7 @@ function setBoardCoverRGB(){
                BoardScene.add(mesh);
                objects.push(mesh);
                objectOnBoard.push(false);
+               objectPosition.push(mesh.position);
 
            }
        })

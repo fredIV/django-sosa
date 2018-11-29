@@ -152,6 +152,16 @@ THREE.DragControls = function ( _objects, _camera, _domElement ) {
 
 			scope.dispatchEvent( { type: 'dragend', object: _selected } );
 
+			for (var v = 0; v < objects.length; v++) {
+
+				if (objects[v] == _selected) {
+
+					objectPosition[v] = _selected.position;
+					//console.log(v + " (" + objectPosition[v].x + "," + objectPosition[v].y + ")");
+
+				}
+
+			}
 			_selected = null;
 
 		}
