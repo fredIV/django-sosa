@@ -69,19 +69,21 @@ class StimSetCreatePageView(FormView):
         return super(StimSetCreatePageView, self).form_valid(form)
 
 
-# class StimSetEditPageView(UpdateView):
-#     form_class =
-
-
 class ViewResultsPageView(TemplateView):
     template_name = "pages/view_results.html"
 
 
 class CreateExperimentPageView(ListView):
     template_name = "pages/create_experiment.html"
-    model = Boards
     queryset = Boards.objects.all()
     context_object_name = "boards"
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateExperimentPageView, self).get_context_data(**kwargs)
+        context['stimsets'] = StimSets.objects.all()
+        # And so on for more models
+        return context
+
 
 
 class ViewExperimentPageView(TemplateView):

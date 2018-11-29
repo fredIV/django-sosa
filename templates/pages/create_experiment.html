@@ -39,27 +39,17 @@
             </table>
         </div>
         <div class="col">
-            <table id="stimuli" align="center">
+            <table id="boards" align="center">
                 <tr class="header">
                     <th>Stimulus Sets</th>
                 </tr>
-                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
-                <tr>
-                    <td>Stim Set 1</td>
-                </tr>
-                <tr>
-                    <td>Stim Set 1</td>
-                </tr>
-                <tr>
-                    <td>Stim Set 3</td>
-                </tr>
-                <tr>
-                    <td>Stim Set 4</td>
-                </tr>
-                <tr>
-                    <td>Stim Set 5</td>
-                </tr>
-                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+                {% for stimset in stimsets %}
+                    {% if stimset.user.id == user.id %}
+                        <tr>
+                            <td><a href="#" class="btn">{{ stimset.stimsetname }}</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
             </table>
         </div>
     </div>
