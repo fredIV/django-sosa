@@ -14,12 +14,13 @@
     <small>This login page is for administrators. To participate in an experiment, click the test link that you were
         given by an administrator.
     </small>
-
+<div>
     <form method="post" id="login-form">
         {% csrf_token %}
         {{ form|crispy }}
         <button class="btn btn-primary" type="submit">Log in</button>
     </form>
+</div>
 
     <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
 {% endblock content %}
