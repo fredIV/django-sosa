@@ -11,16 +11,31 @@
             <th>Your Stimulus Sets</th>
         </tr>
         <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
-        <tr>
-            <td><a href="create">Stimulus Set 1</a></td>
-        </tr>
-        <tr>
-            <td><a href="create">Stimulus Set 2</a></td>
-        </tr>
-        <tr>
-            <td><a href="create">Stimulus Set 3</a></td>
-        </tr>
+        {% for stimset in stimsets %}
+            <tr>
+                <td><a href="#" class="btn">{{ stimset.stimsetname }}</a></td>
+{#                <td><a href="edit/{{ stimset.stimsetid }}" class="btn">{{ stimset.stimsetname }}</a></td>#}
+            </tr>
+        {% endfor %}
+{#        <tr>#}
+{#            <td><a href="create">Stimulus Set 1</a></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td><a href="create">Stimulus Set 2</a></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td><a href="create">Stimulus Set 3</a></td>#}
+{#        </tr>#}
         <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
     </table>
-    <a href="create" class="btn btn-primary" id="createNew">Create New Stimulus Set</a>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="btn btn-primary" value="Create New Stimulus Set" id="create">
+    </form>
+    <script>
+        // Set the user id
+        $("#id_user").val({{ user.id }});
+    </script>
+{#    <a href="create" class="btn btn-primary" id="createNew">Create New Stimulus Set</a>#}
 {% endblock %}

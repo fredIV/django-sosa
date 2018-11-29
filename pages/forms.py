@@ -49,7 +49,7 @@ class StimSetForm(ModelForm):
 
     class Meta:
         model = StimSets
-        fields = ['stimsetname']
+        fields = "__all__"
         widgets = {'user': HiddenInput()}
 
 

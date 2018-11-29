@@ -43,12 +43,13 @@ class BoardEditPageView(UpdateView):
     success_url = reverse_lazy('boards')
 
 
-class StimSetListPageView(CreateView):
+class StimSetListPageView(CreateView, ListView):
     model = StimSets
     template_name = "../templates/pages/stim_sets.html"
     queryset = StimSets.objects.all()
     context_object_name = "stimsets"
     form_class = StimSetForm
+    success_url = reverse_lazy('stimsets')
 
 
 class StimListPageView(ListView):
