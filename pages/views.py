@@ -54,9 +54,14 @@ class StimSetListPageView(CreateView, ListView):
 
 class StimListPageView(ListView):
     model = Stims
-    template_name = "../templates/pages/stimuli.html"
+    template_name = "pages/stimuli.html"
     queryset = Stims.objects.all()
     context_object_name = "stimuli"
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(StimListPageView, self).get_context_data(**kwargs)
+        context['stimsets'] = StimSets.objects.all()
+        return context
 
 
 class StimSetCreatePageView(FormView):
@@ -75,6 +80,7 @@ class ViewResultsPageView(TemplateView):
 
 class CreateExperimentPageView(ListView):
     template_name = "pages/create_experiment.html"
+    model = Boards
     queryset = Boards.objects.all()
     context_object_name = "boards"
 

@@ -8,18 +8,18 @@
 {% block content %}
     <table id="myTable" align="center" style="display: block; overflow-y: scroll">
         <tr class="header">
-            <th>Your Stimuli</th>
+            <th>Stims in the StemSet</th>
         </tr>
         <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
         {% for stimulus in stimuli %}
-            {% if stimulus.stimsetid == user.id %}
+            {% if stimulus.stimsetid_id %}
                 <tr>
-                    <td><a href="#" class="btn">{{ stimset.stimsetname }}</a></td>
-{#                    <td><a href="edit/{{ stimset.stimsetid }}" class="btn">{{ stimset.stimsetname }}</a></td>#}
+                    <td><a href="{{ stimulus.stimsetid_id }}" class="btn">{{ stimulus.stimlabel }}</a></td>
                 </tr>
             {% endif %}
         {% endfor %}
         <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
     </table>
     <a href="create" class="btn btn-primary" id="createNew">Create New Stimulus</a>
+    <p>{{ stimsetid_id }}</p>
 {% endblock %}
