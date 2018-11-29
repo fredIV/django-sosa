@@ -12,10 +12,11 @@
         </tr>
         <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
         {% for stimset in stimsets %}
-            <tr>
-                <td><a href="#" class="btn">{{ stimset.stimsetname }}</a></td>
-{#                <td><a href="edit/{{ stimset.stimsetid }}" class="btn">{{ stimset.stimsetname }}</a></td>#}
-            </tr>
+            {% if stimset.user_id == user.id %}
+                <tr>
+                    <td><a href="edit/{{ stimset.stimsetid }}" class="btn">{{ stimset.stimsetname }}</a></td>
+                </tr>
+            {% endif %}
         {% endfor %}
 {#        <tr>#}
 {#            <td><a href="create">Stimulus Set 1</a></td>#}
@@ -34,7 +35,8 @@
         <input type="submit" class="btn btn-primary" value="Create New Stimulus Set" id="create">
     </form>
     <script>
-
+        // Set the user id
+        $("#id_user").val({{ user.id }});
     </script>
 {#    <a href="create" class="btn btn-primary" id="createNew">Create New Stimulus Set</a>#}
 {% endblock %}
