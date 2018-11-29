@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static "css/create_board.css" %}">
+    <link rel="stylesheet" href="{% static "css/edit_board.css" %}">
 {% endblock %}
 
 {% block content %}
@@ -28,15 +28,15 @@
       <div>
 
         <div id="displaySliderBoard" style="display: block;">
-          <input type="range" min="0" max="255" value="255" class="slider mb-3" id="BoardRvalue" onchange = "setBoardRGB()">
-          <input type="range" min="0" max="255" value="255" class="slider mb-3" id="BoardGvalue" onchange = "setBoardRGB()">
-          <input type="range" min="0" max="255" value="255" class="slider mb-4" id="BoardBvalue" onchange = "setBoardRGB()">
+          <input type="range" min="0" max="255" value="{{ object.boardr }}" class="slider mb-3" id="BoardRvalue" onchange = "setBoardRGB()">
+          <input type="range" min="0" max="255" value="{{ object.boardg }}" class="slider mb-3" id="BoardGvalue" onchange = "setBoardRGB()">
+          <input type="range" min="0" max="255" value="{{ object.boardb }}" class="slider mb-4" id="BoardBvalue" onchange = "setBoardRGB()">
         </div>
 
         <div id="displaySliderBackground" style="display: none;">
-          <input type="range" min="0" max="255" value="0" class="slider mb-3" id="BackgroundRvalue" onchange = "setBackgroundRGB()">
-          <input type="range" min="0" max="255" value="0" class="slider mb-3" id="BackgroundGvalue" onchange = "setBackgroundRGB()">
-          <input type="range" min="0" max="255" value="0" class="slider mb-4" id="BackgroundBvalue" onchange = "setBackgroundRGB()">
+          <input type="range" min="0" max="255" value="{{ object.boardbackgroundr }}" class="slider mb-3" id="BackgroundRvalue" onchange = "setBackgroundRGB()">
+          <input type="range" min="0" max="255" value="{{ object.boardbackgroundg }}" class="slider mb-3" id="BackgroundGvalue" onchange = "setBackgroundRGB()">
+          <input type="range" min="0" max="255" value="{{ object.boardbackgroundb }}" class="slider mb-4" id="BackgroundBvalue" onchange = "setBackgroundRGB()">
         </div>
 
         <div id="displaySliderCover" style="display: none;">
@@ -58,16 +58,12 @@
     <a href="{% url 'boards' %}" class="btn btn-primary">Cancel</a>
 
     <script>
-        // Set the user id
-        $("#id_user").val({{ user.id }});
+        // Set the default color of the ThreeJS features to their specified values
+        setBoardRGB();
+        setBackgroundRGB();
 
-        // Set initial RGB values
-        $("#id_boardr").val($("#Rbv").html());
-        $("#id_boardg").val($("#Gbv").html());
-        $("#id_boardb").val($("#Bbv").html());
-        $("#id_boardbackgroundr").val($("#Rbgv").html());
-        $("#id_boardbackgroundg").val($("#Gbgv").html());
-        $("#id_boardbackgroundb").val($("#Bbgv").html());
+        // Auto-fill user id
+        $("#id_user").val({{ user.id }});
    </script>
 
 {% endblock %}

@@ -176,6 +176,9 @@ function setBoardRGB(){
 
   if(!BoardCoverBool){
     Boardmaterial.color.setHex(BoardColor);
+    $("#id_boardr").val($("#Rbv").html());
+    $("#id_boardg").val($("#Gbv").html());
+    $("#id_boardb").val($("#Bbv").html());
   }
 }
 
@@ -186,6 +189,9 @@ function setBackgroundRGB(){
   var blueHex = rgbToHex(document.getElementById("BackgroundBvalue").value);
   var stringHex = "0x" + redHex + greenHex + blueHex;
   skyBoxMaterial.color.setHex(stringHex);
+  $("#id_boardbackgroundr").val($("#Rbgv").html());
+  $("#id_boardbackgroundg").val($("#Gbgv").html());
+  $("#id_boardbackgroundb").val($("#Bbgv").html());
 }
 
 //updates the color of the board cover

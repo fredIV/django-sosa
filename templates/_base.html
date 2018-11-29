@@ -51,9 +51,9 @@
                 {{ user.email }}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
-                <a class="dropdown-item" href="{% url 'account_change_password' %}">Change password</a>
+                <a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
+                <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
 
 {# TODO add in the functionality to add users if understood to have the superuser permission, meaning fix logic, currently button doesn't work#}
                   {% if user.is_superuser %}
@@ -67,8 +67,8 @@
           </ul>
         {% else %}
           <form class="form-inline ml-auto">
-            <a href="{% url 'account_login' %}" class="btn btn-outline-secondary">Log in</a>
-            <a href="{% url 'account_signup' %}" class="btn btn-primary ml-2">Sign up</a>
+            <a href="{% url 'account_login' %}" class="btn btn-outline-secondary">Log In</a>
+            <a href="{% url 'account_signup' %}" class="btn btn-primary ml-2">Sign Up</a>
           </form>
         {% endif %}
 {#      end navbar user information #}

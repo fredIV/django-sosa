@@ -15,7 +15,7 @@
         {% for board in boards %}
             {% if board.user_id == user.id %}
                 <tr>
-                    <td><button class="btn">{{ board.boardname }}</button></td>
+                    <td><a href="edit/{{ board.boardid }}" class="btn">{{ board.boardname }}</a></td>
                 </tr>
             {% endif %}
         {% endfor %}

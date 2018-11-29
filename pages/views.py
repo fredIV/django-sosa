@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import TemplateView, FormView, ListView, UpdateView, CreateView
 from django.urls import reverse_lazy
 from urllib import request
 from django.shortcuts import render
@@ -35,26 +35,52 @@ class BoardCreatePageView(FormView):
         return super(BoardCreatePageView, self).form_valid(form)
 
 
-class StimSetListPageView(TemplateView):
-    template_name = "pages/stim_sets.html"
+class BoardEditPageView(UpdateView):
+    model = Boards
+    context_object_name = "boards"
+    form_class = BoardEditForm
+    template_name = "../templates/pages/edit_board.html"
+    success_url = reverse_lazy('boards')
 
 
-class StimSetPageView(FormView):
+class StimSetListPageView(CreateView):
+    model = StimSets
+    template_name = "../templates/pages/stim_sets.html"
+    queryset = StimSets.objects.all()
+    context_object_name = "stimsets"
+    form_class = StimSetForm
+
+
+class StimListPageView(ListView):
+    model = Stims
+    template_name = "../templates/pages/stimuli.html"
+    queryset = Stims.objects.all()
+    context_object_name = "stimuli"
+
+
+class StimSetCreatePageView(FormView):
     form_class = StimForm
     template_name = "../templates/pages/create_stimulus.html"
     success_url = reverse_lazy('create_stimulus')
 
     def form_valid(self, form):
         form.save()
-        return super(StimSetPageView, self).form_valid(form)
+        return super(StimSetCreatePageView, self).form_valid(form)
+
+
+# class StimSetEditPageView(UpdateView):
+#     form_class =
 
 
 class ViewResultsPageView(TemplateView):
     template_name = "pages/view_results.html"
 
 
-class CreateExperimentPageView(TemplateView):
+class CreateExperimentPageView(ListView):
     template_name = "pages/create_experiment.html"
+    model = Boards
+    queryset = Boards.objects.all()
+    context_object_name = "boards"
 
 
 class ViewExperimentPageView(TemplateView):

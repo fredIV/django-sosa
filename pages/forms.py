@@ -20,11 +20,37 @@ class BoardForm(ModelForm):
                    }
 
 
+class BoardEditForm(ModelForm):
+
+    class Meta:
+        model = Boards
+        fields = ['boardname',
+                  'boardr',
+                  'boardg',
+                  'boardb',
+                  'boardtiltx',
+                  'boardtilty',
+                  'boardbackgroundr',
+                  'boardbackgroundg',
+                  'boardbackgroundb',
+                  ]
+        widgets = {'boardr': HiddenInput(),
+                   'boardg': HiddenInput(),
+                   'boardb': HiddenInput(),
+                   'boardtiltx': HiddenInput(),
+                   'boardtilty': HiddenInput(),
+                   'boardbackgroundr': HiddenInput(),
+                   'boardbackgroundg': HiddenInput(),
+                   'boardbackgroundb': HiddenInput(),
+                   }
+
+
 class StimSetForm(ModelForm):
 
     class Meta:
         model = StimSets
-        fields = '__all__'
+        fields = ['stimsetname']
+        widgets = {'user': HiddenInput()}
 
 
 class StimForm(ModelForm):

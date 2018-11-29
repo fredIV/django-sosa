@@ -29,22 +29,13 @@
                     <th>Boards</th>
                 </tr>
                 <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
-                <tr>
-                    <td>Board 1</td>
-                </tr>
-                <tr>
-                    <td>Board 2</td>
-                </tr>
-                <tr>
-                    <td>Board 3</td>
-                </tr>
-                <tr>
-                    <td>Board 4</td>
-                </tr>
-                <tr>
-                    <td>Board 5</td>
-                </tr>
-                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+                {% for board in boards %}
+                    {% if board.user_id == user.id %}
+                        <tr>
+                            <td><a href="#" class="btn">{{ board.boardname }}</a></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
             </table>
         </div>
         <div class="col">
