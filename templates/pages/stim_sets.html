@@ -18,16 +18,6 @@
                 </tr>
             {% endif %}
         {% endfor %}
-{#        <tr>#}
-{#            <td><a href="create">Stimulus Set 1</a></td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <td><a href="create">Stimulus Set 2</a></td>#}
-{#        </tr>#}
-{#        <tr>#}
-{#            <td><a href="create">Stimulus Set 3</a></td>#}
-{#        </tr>#}
-        <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
     </table>
     <form method="post" action="">
         {% csrf_token %}
@@ -38,5 +28,4 @@
         // Set the user id
         $("#id_user").val({{ user.id }});
     </script>
-{#    <a href="create" class="btn btn-primary" id="createNew">Create New Stimulus Set</a>#}
 {% endblock %}
