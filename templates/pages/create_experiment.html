@@ -84,7 +84,7 @@
             // Add stims from stimset to table
             {% for stimulus in stimuli %}
                 if (stimsetID == {{ stimulus.stimsetid_id }}) {
-                    $("#stimTable").append("<tr><td><button class='btn' onclick='stimToBoard(this, {{ stimulus.stimr }}, {{ stimulus.stimg }}, {{ stimulus.stimb }}, \"{{ stimulus.stimshape }}\")'>{{ stimulus.stimlabel }}</button></td></tr>");
+                    $("#stimTable").append("<tr><td><button class='btn' style='background-color:inherit;' onclick='stimToBoard(this, {{ stimulus.stimr }}, {{ stimulus.stimg }}, {{ stimulus.stimb }}, \"{{ stimulus.stimshape }}\")'>{{ stimulus.stimlabel }}</button></td></tr>");
                 }
             {% endfor %}
         }
