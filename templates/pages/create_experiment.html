@@ -28,7 +28,7 @@
                 <tr class="header">
                     <th>Boards</th>
                 </tr>
-                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+{#                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->#}
                 {% for board in boards %}
                     {% if board.user_id == user.id %}
                         <tr>
@@ -36,10 +36,11 @@
                         </tr>
                     {% endif %}
                 {% endfor %}
+{#                End fill in the table with results from the database#}
             </table>
         </div>
         <div class="col">
-            <table id="boards" align="center">
+            <table id="stims" align="center">
                 <tr class="header">
                     <th>Stimulus Sets</th>
                 </tr>

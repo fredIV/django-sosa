@@ -1,6 +1,6 @@
 window.onload = function () {
     runFirst("boards");
-    runFirst("stimuli");
+    runFirst("stims");
 };
 
 function runFirst(name) {
