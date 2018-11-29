@@ -17,5 +17,5 @@ urlpatterns = [
     path('stimsets/edit/<int:pk>', StimListPageView.as_view(), name='stimuli'),
     path('view_results', ViewResultsPageView.as_view(), name='view_results'),
     path('create_experiment', CreateExperimentPageView.as_view(), name='create_experiment'),
-    path('view_experiment', ViewExperimentPageView.as_view(), name='view_experiment'),
+    path('experiment', ViewExperimentPageView.as_view(), name='experiment'),
 ]
