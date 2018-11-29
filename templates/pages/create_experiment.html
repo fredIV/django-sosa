@@ -10,49 +10,102 @@
 {% endblock %}
 
 {% block content %}
-        <script src="{% static "js/create_experiment.js" %}"></script>
-    <script>
-        var experiment = [-1, -1];
+    <div class="row justify-content-center">
+        <table id="stims" align="center">
+            <tr class="header">
+                <th>Stimulus Sets</th>
+            </tr>
+            {% for stimset in stimsets %}
+                {% if stimset.user.id == user.id %}
+                    <tr>
+                        <td><button class="btn" onclick="loadStimset({{ stimset.stimsetid }})">{{ stimset.stimsetname }}</button></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+        <table id="boards" align="center">
+            <tr class="header">
+                <th>Boards</th>
+            </tr>
+            <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->
+            {% for board in boards %}
+                {% if board.user_id == user.id %}
+                    <tr>
+                        <td><button class="btn" onclick="loadBoard({{ board.boardid }})">{{ board.boardname }}</button></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            <!--End fill in the table with results from the database-->
+        </table>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <table id="stimTable">
+            <tr class="header">
+                <th>Stimuli</th>
+            </tr>
+            {# Replace with database calls #}
+            <tr>
+                <td><button class="btn">Stimulus 1</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn">Stimulus 2</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn">Stimulus 3</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn">Stimulus 4</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn">Stimulus 5</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn">Stimulus 6</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn">Stimulus 7</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn">Stimulus 8</button></td>
+            </tr>
+            {# Replace with database calls #}
+        </table>
+        <div id="ThreeJSBoard"></div>
+        <script src="{% static "js/createBoard.js" %}"></script>
+    </div>
+    <button class="btn btn-primary" id="saveExperiment">Save Experiment</button>
 
-        function updateStim(num) {
-            experiment[0] = num;
+    <input type="hidden" id="BoardRvalue">
+    <input type="hidden" id="BoardGvalue">
+    <input type="hidden" id="BoardBvalue">
+    <input type="hidden" id="BackgroundRvalue">
+    <input type="hidden" id="BackgroundGvalue">
+    <input type="hidden" id="BackgroundBvalue">
+
+    <script>
+        function loadBoard(boardID) {
+            {% for board in boards %}
+                if (boardID == {{ board.boardid }}) {
+                    $("#BoardRvalue").val({{ board.boardr }});
+                    $("#BoardGvalue").val({{ board.boardg }});
+                    $("#BoardBvalue").val({{ board.boardb }});
+                    $("#BackgroundRvalue").val({{ board.boardbackgroundr }});
+                    $("#BackgroundGvalue").val({{ board.boardbackgroundg }});
+                    $("#BackgroundBvalue").val({{ board.boardbackgroundb }});
+                }
+            {% endfor %}
+            setBoardRGB();
+            setBackgroundRGB();
         }
 
-        function updateBoard(num) {
-
+        function loadStimset(stimsetID) {
+            {% for stimset in stimsets %}
+                if (stimsetID == {{ stimset.stimsetid }}) {
+                    {% for stimulus in stimuli %}
+                    {% endfor %}
+                }
+            {% endfor %}
         }
     </script>
-    <div class="row">
-        <div class="col">
-            <table id="boards" align="center">
-                <tr class="header">
-                    <th>Boards</th>
-                </tr>
-{#                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->#}
-                {% for board in boards %}
-                    {% if board.user_id == user.id %}
-                        <tr>
-                            <td><a href="#" class="btn">{{ board.boardname }}</a></td>
-                        </tr>
-                    {% endif %}
-                {% endfor %}
-{#                End fill in the table with results from the database#}
-            </table>
-        </div>
-        <div class="col">
-            <table id="stims" align="center">
-                <tr class="header">
-                    <th>Stimulus Sets</th>
-                </tr>
-                {% for stimset in stimsets %}
-                    {% if stimset.user.id == user.id %}
-                        <tr>
-                            <td><a href="#" class="btn">{{ stimset.stimsetname }}</a></td>
-                        </tr>
-                    {% endif %}
-                {% endfor %}
-            </table>
-        </div>
-    </div>
-    <button class="btn btn-primary">Preview</button>
 {% endblock %}
