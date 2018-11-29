@@ -140,7 +140,9 @@ var greenHex = rgbToHex(document.getElementById("GvalueStim").value);
 var blueHex = rgbToHex(document.getElementById("BvalueStim").value);
 var stringHex = "0x" + redHex + greenHex + blueHex;
 Pegmaterial.color.setHex(stringHex);
-
+$("#id_stimr").val($("#sR").html());
+$("#id_stimg").val($("#sG").html());
+$("#id_stimb").val($("#sB").html());
 }
 
 function setPeg(r,g,b) {
@@ -165,6 +167,9 @@ var greenHex = rgbToHex(document.getElementById("lGvalueStim").value);
 var blueHex = rgbToHex(document.getElementById("lBvalueStim").value);
 var stringHex = "0x" + redHex + greenHex + blueHex;
 spriteMaterial.color.setHex(stringHex);
+$("#id_labelr").val($("#lR").html());
+$("#id_labelg").val($("#lG").html());
+$("#id_labelb").val($("#lB").html());
 }
 
 function rgbToHex(rgb){

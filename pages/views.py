@@ -64,14 +64,22 @@ class StimListPageView(ListView):
         return context
 
 
-class StimSetCreatePageView(FormView):
+class StimCreatePageView(FormView):
     form_class = StimForm
     template_name = "../templates/pages/create_stimulus.html"
-    success_url = reverse_lazy('create_stimulus')
+    success_url = reverse_lazy('stimsets')
 
     def form_valid(self, form):
         form.save()
-        return super(StimSetCreatePageView, self).form_valid(form)
+        return super(StimCreatePageView, self).form_valid(form)
+
+
+class StimEditPageView(UpdateView):
+    model = Stims
+    context_object_name = "stimuli"
+    form_class = StimEditForm
+    template_name = "../templates/pages/edit_stimulus.html"
+    success_url = reverse_lazy('stimsets')
 
 
 class ViewResultsPageView(TemplateView):

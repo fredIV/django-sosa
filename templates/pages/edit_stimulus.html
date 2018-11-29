@@ -37,27 +37,28 @@
                           </div>
 
                         <div id="displaySliderStimulus" class="pt-3" style="width: 250px; display: block;">
-                        <input type="range" min="0" max="255" value="0" class="slider mb-3" id="RvalueStim" onchange = "setPegRGB()">
-                        <input type="range" min="0" max="255" value="0" class="slider mb-3" id="GvalueStim" onchange = "setPegRGB()">
-                        <input type="range" min="0" max="255" value="0" class="slider mb-4" id="BvalueStim" onchange = "setPegRGB()">
+                        <input type="range" min="0" max="255" value="{{ object.stimr }}" class="slider mb-3" id="RvalueStim" onchange = "setPegRGB()">
+                        <input type="range" min="0" max="255" value="{{ object.stimg }}" class="slider mb-3" id="GvalueStim" onchange = "setPegRGB()">
+                        <input type="range" min="0" max="255" value="{{ object.stimb }}" class="slider mb-4" id="BvalueStim" onchange = "setPegRGB()">
                       </div>
                       <div id="displaySliderLabel" class="pt-3" style="width: 250px; display: none;">
-                        <input type="range" min="0" max="255" value="0" class="slider mb-3" id="lRvalueStim" onchange = "setLabelRGB()">
-                        <input type="range" min="0" max="255" value="0" class="slider mb-3" id="lGvalueStim" onchange = "setLabelRGB()">
-                        <input type="range" min="0" max="255" value="0" class="slider mb-4" id="lBvalueStim" onchange = "setLabelRGB()">
+                        <input type="range" min="0" max="255" value="{{ object.labelr }}" class="slider mb-3" id="lRvalueStim" onchange = "setLabelRGB()">
+                        <input type="range" min="0" max="255" value="{{ object.labelg }}" class="slider mb-3" id="lGvalueStim" onchange = "setLabelRGB()">
+                        <input type="range" min="0" max="255" value="{{ object.labelb }}" class="slider mb-4" id="lBvalueStim" onchange = "setLabelRGB()">
                       </div>
                         <p id="message"></p>
 
                         <script src="{% static "js/RGB_stim_generator.js" %}"></script>
                     <script>
                         // Set initial stim shape
+                        $("#shapes").val("{{ object.stimshape }}");
                         $("#id_stimshape").val($("#shapes").val());
 
-                        // Set stimset ID
-                        let path = "{{ request.path }}";
-                        let stimsetID = path.slice(22);
-                        $("#id_stimsetid").val(stimsetID);
+                        // Set default color of ThreeJS features
+                        setPegRGB();
+                        setLabelRGB();
 
+                        // Set shape event listener
                         $("#shapes").click(function() {
                            $("#id_stimshape").val($("#shapes").val());
                         });

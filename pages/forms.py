@@ -67,3 +67,27 @@ class StimForm(ModelForm):
                    'labelb': HiddenInput(),
                    'stimshape': HiddenInput(),
                    }
+
+
+class StimEditForm(ModelForm):
+
+    class Meta:
+        model = Stims
+        fields = ['stimr',
+                  'stimb',
+                  'stimg',
+                  'stimlabel',
+                  'labelr',
+                  'labelg',
+                  'labelb',
+                  'stimshape',
+                  ]
+        widgets = {'stimsetid': HiddenInput(),
+                   'stimr': HiddenInput(),
+                   'stimg': HiddenInput(),
+                   'stimb': HiddenInput(),
+                   'labelr': HiddenInput(),
+                   'labelg': HiddenInput(),
+                   'labelb': HiddenInput(),
+                   'stimshape': HiddenInput(),
+                   }

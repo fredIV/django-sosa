@@ -1,0 +1,80 @@
+/* Inspired by Sunil Rajput at Bootsnipp */
+
+body {
+	/*background: #7C3293;  !* fallback for old browsers *!*/
+	/*background: -webkit-linear-gradient(to right, #7C3293, #42538D);  !* Chrome 10-25, Safari 5.1-6 *!*/
+	background: linear-gradient(to right, #852897, #007aff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.container {
+	align-content: center;
+}
+
+.mx-auto {
+	width: 700px;
+	margin: 20px;
+	background-color: #ffffff;
+	opacity: 0.8;
+	padding: 20px;
+}
+
+button {
+    margin: 10px;
+    width: auto;
+}
+
+#home {
+	width: 60px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#settings {
+	margin: 0;
+	z-index: 1;
+	width: 60px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.drop-list {
+	width: auto;
+	margin: auto;
+}
+
+#myTable {
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+#myTable th, #myTable td {
+    width: 330px;
+    text-align: center;
+    padding: 12px;
+}
+
+#myTable tr {
+    border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header {
+    background-color: #f1f1f1;
+}
+
+#ThreeJSPeg {
+	margin-top: 20px;
+}
+
+#shapes {
+	margin-bottom: 10px;
+}
+
+#displaySliderStimulus, #displaySliderLabel {
+	margin-left: 30px;
+}
+
+.show {display: block;}
