@@ -259,7 +259,7 @@ function boardLock() {
                 objects[i].position.y = 12;
             }
 
-            objects[i].position.z = 1;
+            objects[i].position.z = 0.5;
 
         }
 
@@ -288,7 +288,7 @@ function stimToBoard(button, stimr, stimg, stimb, stimshape) {
             color = new THREE.Color("rgb(" + stimr + ", " + stimg + ", " + stimb + ")");
             Pegmaterial = new THREE.MeshPhongMaterial({color: color, shininess: 30});
             mesh = new THREE.Mesh(peg, Pegmaterial);
-            mesh.position.set(-12, 12, 1);
+            mesh.position.set(-12, 12, 0.5);
             BoardScene.add(mesh);
             objects.push(mesh);
             objectOnBoard.push(false);
@@ -299,7 +299,7 @@ function stimToBoard(button, stimr, stimg, stimb, stimshape) {
             color = new THREE.Color("rgb(" + stimr + ", " + stimg + ", " + stimb + ")");
             Pegmaterial = new THREE.MeshPhongMaterial({color: color, shininess: 30});
             mesh = new THREE.Mesh(peg, Pegmaterial);
-            mesh.position.set(-12, 12, 1);
+            mesh.position.set(-12, 12, 0.5);
             BoardScene.add(mesh);
             objects.push(mesh);
             objectOnBoard.push(false);
