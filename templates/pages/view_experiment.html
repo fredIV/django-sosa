@@ -7,36 +7,6 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-
-{#    <div class="row justify-content-center">#}
-{#        <table id="stims" align="center">#}
-{#            <tr class="header">#}
-{#                <th>Stimulus Sets</th>#}
-{#            </tr>#}
-{#            {% for stimset in stimsets %}#}
-{#                {% if stimset.user.id == user.id %}#}
-{#                    <tr>#}
-{#                        <td><button class="btn" onclick="loadStimset({{ stimset.stimsetid }})">{{ stimset.stimsetname }}</button></td>#}
-{#                    </tr>#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#        </table>#}
-{#        <table id="boards" align="center">#}
-{#            <tr class="header">#}
-{#                <th>Boards</th>#}
-{#            </tr>#}
-{#            <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->#}
-{#            {% for board in boards %}#}
-{#                {% if board.user_id == user.id %}#}
-{#                    <tr>#}
-{#                        <td><button class="btn" onclick="loadBoard({{ board.boardid }})">{{ board.boardname }}</button></td>#}
-{#                    </tr>#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#            <!--End fill in the table with results from the database-->#}
-{#        </table>#}
-{#    </div>#}
-{#    <hr>#}
     <div class="row justify-content-center">
         <table id="stimTable">
             <tr class="header">
@@ -46,8 +16,8 @@
         <div id="ThreeJSBoard"></div>
         <script src="{% static "js/createBoard.js" %}"></script>
     </div>
-        <input class="btn btn-primary" type="button" id="submitExperiment" value="Submit" onclick="location.href=
-                '{% url 'experiment' %}'"  />
+        <input class="btn btn-primary" type="button" id="submitExperiment" value="Submit"/>
+{#        This button needs to pull the information from the test to whatever we're doing with it#}
 
     <input type="hidden" id="BoardRvalue">
     <input type="hidden" id="BoardGvalue">
@@ -86,38 +56,6 @@
         }
     </script>
     {% endif %}
-{#    <div class="row">#}
-{##}
-{#        <div class="col">#}
-{#            <table id="myTable" align="center" style="display: block; overflow-y: scroll">#}
-{#                <tr class="header">#}
-{#                    <th>Your Stimuli</th>#}
-{#                </tr>#}
-{#                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->#}
-{#                <tr>#}
-{#                    <td>#}
-{#                        <button class="Stimulus 1" onclick="stimToBoard(this)">Stim</button>#}
-{#                    </td>#}
-{#                </tr>#}
-{#                <tr>#}
-{#                    <td><a href="#">Stimulus 2</a></td>#}
-{#                </tr>#}
-{#                <tr>#}
-{#                    <td><a href="#">Stimulus 3</a></td>#}
-{#                </tr>#}
-{#                <!--FILL IN THE TABLE WITH RESULTS FROM THE DATABASE-->#}
-{#            </table>#}
-{#        </div>#}
-{##}
-{#        <div class="col">#}
-{#            <div id="ThreeJSBoard"></div>#}
-{#        </div>#}
-{##}
-{#    </div>#}
-{#    <script src="{% static "js/createBoard.js" %}"></script>#}
-{##}
-{##}
-{#    <script src="{% static "js/rbgValueGenerator.js" %}"></script>#}
 
 
 {% endblock %}

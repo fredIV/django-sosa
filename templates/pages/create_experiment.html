@@ -50,8 +50,11 @@
         <div id="ThreeJSBoard"></div>
         <script src="{% static "js/createBoard.js" %}"></script>
     </div>
-        <input class="btn btn-primary" type="button" value="Send Experiment" onclick="location.href=
-                '{% url 'experiment' %}'"  />
+        <input type="button" class="btn btn-info"
+               value="Send Experiment"
+               onclick="location.href='{% url 'experiment' stimsetid=3 boardid=4%}';">
+
+{#        This needs to be dynamic values based on what's selected#}
 
     <input type="hidden" id="BoardRvalue">
     <input type="hidden" id="BoardGvalue">
