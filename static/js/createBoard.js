@@ -28,7 +28,7 @@ function initBoard() {
 
     // RENDERER
     if (Detector.webgl) {
-             BoardRenderer = new THREE.WebGLRenderer( {antialias:true, preserveDrawingBuffer: true} ); //add the preserveDrawingBuffer: true to this in other file
+        BoardRenderer = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
     } else {
         BoardRenderer = new THREE.CanvasRenderer();
     }

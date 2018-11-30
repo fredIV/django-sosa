@@ -16,7 +16,8 @@
         <div id="ThreeJSBoard"></div>
         <script src="{% static "js/createBoard.js" %}"></script>
     </div>
-        <input class="btn btn-primary" type="button" id="submitExperiment" value="Submit" onclick="onExperimentClick()"/>
+    <input class="btn btn-primary" type="button" id="submitExperiment" value="Submit" onclick="onExperimentClick()"/>
+    <div id="links"></div>
 {#        This button needs to pull the information from the test to whatever we're doing with it#}
 
     <input type="hidden" id="BoardRvalue">
@@ -29,13 +30,6 @@
     <p id="message"></p>
 
     <script>
-    //here----------------
-
-
-
-
-
-
         let stimsetID = {{ stimsetid }};
         let boardID = {{ boardid }};
 

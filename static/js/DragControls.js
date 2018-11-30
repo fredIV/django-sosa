@@ -336,8 +336,9 @@ function onExperimentClick() {
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "my_data.csv");
-    link.innerHTML += "I'm trying ";
-    $("#submitExperiment").after(link);
+    link.setAttribute("class", "btn btn-success");
+    link.innerHTML += "CSV Results";
+    $("#links").append(link);
 
       //add the preserveDrawingBuffer: true to this in other file
 
@@ -345,8 +346,9 @@ function onExperimentClick() {
 
     link2 = document.createElement("a");
     link2.setAttribute("href", BoardRenderer.domElement.toDataURL());
+    link2.setAttribute("class", "btn btn-success");
     link2.innerHTML += "Image of Experiment";
-     $("#submitExperiment").after(link2);
+     $("#links").append(link2);
 
 
 

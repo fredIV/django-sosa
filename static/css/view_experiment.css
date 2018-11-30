@@ -80,4 +80,8 @@ tr.header {
   background-color: #f1f1f1;
 }
 
+.btn-success {
+	margin: 10px;
+}
+
 .show {display: block;}
