@@ -29,6 +29,17 @@
     <p id="message"></p>
 
     <script>
+    //here----------------
+     BoardRenderer = new THREE.WebGLRenderer( {antialias:true, preserveDrawingBuffer: true} ); //add the preserveDrawingBuffer: true to this in other file
+
+    function captureScreen(){
+     BoardRenderer.domElement.toDataURL();
+     console.log(BoardRenderer.domElement.toDataURL());
+    }
+
+
+
+
         let stimsetID = {{ stimsetid }};
         let boardID = {{ boardid }};
 
