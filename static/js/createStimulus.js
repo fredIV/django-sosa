@@ -191,7 +191,7 @@ $(document).ready(function() {
     $("#shapes").click(function() {
         var name = $("#shapes").val();
         var r, g,b;
-       if(name == "Cube") {
+       if(name === "Cube") {
             pegScene.remove(mesh);
 
            peg = new THREE.CubeGeometry(10, 10, 10);
@@ -205,7 +205,7 @@ $(document).ready(function() {
         mesh.position.set(0,0,10);
         pegScene.add(mesh);
        }
-       else if (name == "Cylinder") {
+       else if (name === "Cylinder") {
              pegScene.remove(mesh);
             peg = new THREE.CylinderGeometry( 5, 5, 15, 100 );
            r =rgbToHex(document.getElementById("RvalueStim").value);
@@ -219,7 +219,7 @@ $(document).ready(function() {
         pegScene.add(mesh);
        }
 
-       else if (name == "Cone") {
+       else if (name === "Cone") {
             pegScene.remove(mesh);
             peg = new THREE.CylinderGeometry( 0, 9, 12, 15, 1  );
             r =rgbToHex(document.getElementById("RvalueStim").value);
@@ -234,6 +234,6 @@ $(document).ready(function() {
 
        }
     })
-})
+});
 
 
