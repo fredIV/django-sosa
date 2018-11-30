@@ -16,7 +16,7 @@
         <div id="ThreeJSBoard"></div>
         <script src="{% static "js/createBoard.js" %}"></script>
     </div>
-        <input class="btn btn-primary" type="button" id="submitExperiment" value="Submit"/>
+        <input class="btn btn-primary" type="button" id="submitExperiment" value="Submit" onclick="onExperimentClick()"/>
 {#        This button needs to pull the information from the test to whatever we're doing with it#}
 
     <input type="hidden" id="BoardRvalue">
@@ -30,12 +30,8 @@
 
     <script>
     //here----------------
-     BoardRenderer = new THREE.WebGLRenderer( {antialias:true, preserveDrawingBuffer: true} ); //add the preserveDrawingBuffer: true to this in other file
 
-    function captureScreen(){
-     BoardRenderer.domElement.toDataURL();
-     console.log(BoardRenderer.domElement.toDataURL());
-    }
+
 
 
 

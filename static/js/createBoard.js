@@ -6,6 +6,8 @@ var objects = [];
 var objectOnBoard = [];
 var objectPosition = [];
 
+var array = [];
+
 
 BoardCoverBool = false;
 BoardCoverColor = "0x0000FF";
@@ -26,7 +28,7 @@ function initBoard() {
 
     // RENDERER
     if (Detector.webgl) {
-        BoardRenderer = new THREE.WebGLRenderer({antialias: true});
+             BoardRenderer = new THREE.WebGLRenderer( {antialias:true, preserveDrawingBuffer: true} ); //add the preserveDrawingBuffer: true to this in other file
     } else {
         BoardRenderer = new THREE.CanvasRenderer();
     }

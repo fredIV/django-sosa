@@ -4,6 +4,8 @@
  * Running this will allow you to drag three.js objects around the screen.
  */
 var _selected;
+var myarray = [];
+var count = 0;
 
 THREE.DragControls = function (_objects, _camera, _domElement) {
 
@@ -141,10 +143,33 @@ THREE.DragControls = function (_objects, _camera, _domElement) {
 
             scope.dispatchEvent({type: 'dragstart', object: _selected});
 
+            for (var v = 0; v < objects.length; v++) {
+
+                if (objects[v] == _selected) {
+                    var timeStamp = new Date();
+                    objectPosition[v] = _selected.position;
+                    myarray.push([v , timeStamp.toLocaleTimeString().toString()]);
+                    if(count % 2 == 0) {
+                        myarray.push(["start:" ,"x:" + objectPosition[v].x, "y: " + objectPosition[v].y]);
+                    }
+                    else{
+                        myarray.push(["end: " ,"x:" + objectPosition[v].x, "y: " + objectPosition[v].y]);
+                    }
+                    console.log("Object: " + v + " X Value: " + myarray[myarray.length-1][0] + " Y Value: " + myarray[myarray.length-1][1] + " " + timeStamp.toLocaleTimeString());
+                    //console.log(v + " (" + objectPosition[v].x + "," + objectPosition[v].y + ")");
+                }
+
+            }
+
+
+
+
         }
 
 
     }
+
+
 
     function onDocumentMouseCancel(event) {
 
@@ -157,8 +182,10 @@ THREE.DragControls = function (_objects, _camera, _domElement) {
             for (var v = 0; v < objects.length; v++) {
 
                 if (objects[v] == _selected) {
-
+                    var timeStamp = new Date();
                     objectPosition[v] = _selected.position;
+                    myarray.push(["END: " , "x: " + objectPosition[v].x, "y: " + objectPosition[v].y]);
+                    console.log("Object: " + v + " X Value: " + myarray[myarray.length-1][0] + " Y Value: " + myarray[myarray.length-1][1] + " " + timeStamp.toLocaleTimeString());
                     //console.log(v + " (" + objectPosition[v].x + "," + objectPosition[v].y + ")");
 
                 }
@@ -294,3 +321,34 @@ THREE.DragControls = function (_objects, _camera, _domElement) {
 
 THREE.DragControls.prototype = Object.create(THREE.EventDispatcher.prototype);
 THREE.DragControls.prototype.constructor = THREE.DragControls;
+
+
+function onExperimentClick() {
+
+    let csvContent = "data:text/csv;charset=utf-8,";
+    myarray.forEach(function (rowArray) {
+        let row = rowArray.join(",");
+        console.log("Hello ");
+        csvContent += row + "\r\n";
+    });
+
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "my_data.csv");
+    link.innerHTML += "I'm trying ";
+    $("#submitExperiment").after(link);
+
+      //add the preserveDrawingBuffer: true to this in other file
+
+    console.log(BoardRenderer.domElement.toDataURL());
+
+    link2 = document.createElement("a");
+    link2.setAttribute("href", BoardRenderer.domElement.toDataURL());
+    link2.innerHTML += "Image of Experiment";
+     $("#submitExperiment").after(link2);
+
+
+
+
+}
