@@ -324,6 +324,7 @@ THREE.DragControls.prototype.constructor = THREE.DragControls;
 
 
 function onExperimentClick() {
+    $("#submitExperiment").hide();
 
     let csvContent = "data:text/csv;charset=utf-8,";
     myarray.forEach(function (rowArray) {
