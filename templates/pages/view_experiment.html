@@ -26,34 +26,33 @@
     <input type="hidden" id="BackgroundGvalue">
     <input type="hidden" id="BackgroundBvalue">
 
-    <script>
-        function loadBoard(boardID) {
-            // Set board colors to hidden inputs
-            {% for board in boards %}
-                if (boardID == {{ board.boardid }}) {
-                    $("#BoardRvalue").val({{ board.boardr }});
-                    $("#BoardGvalue").val({{ board.boardg }});
-                    $("#BoardBvalue").val({{ board.boardb }});
-                    $("#BackgroundRvalue").val({{ board.boardbackgroundr }});
-                    $("#BackgroundGvalue").val({{ board.boardbackgroundg }});
-                    $("#BackgroundBvalue").val({{ board.boardbackgroundb }});
-                }
-            {% endfor %}
-            // Change board colors based on hidden inputs
-            setBoardRGB();
-            setBackgroundRGB();
-        }
+    <p id="message"></p>
 
-        function loadStimset(stimsetID) {
-            // Reset the table
-            $("#stimTable").html("<tr class='header'><th>Stimuli</th></tr>");
-            // Add stims from stimset to table
-            {% for stimulus in stimuli %}
-                if (stimsetID == {{ stimulus.stimsetid_id }}) {
-                    $("#stimTable").append("<tr><td><button class='btn' style='background-color:inherit;' onclick='stimToBoard(this, {{ stimulus.stimr }}, {{ stimulus.stimg }}, {{ stimulus.stimb }}, \"{{ stimulus.stimshape }}\")'>{{ stimulus.stimlabel }}</button></td></tr>");
-                }
-            {% endfor %}
-        }
+    <script>
+        let stimsetID = {{ stimsetid }};
+        let boardID = {{ boardid }};
+
+        // Add stims from stimset to table
+        {% for stimulus in stimuli %}
+            if (stimsetID === {{ stimulus.stimsetid_id }}) {
+                $("#stimTable").append("<tr><td><button class='btn' style='background-color:inherit;' onclick='stimToBoard(this, {{ stimulus.stimr }}, {{ stimulus.stimg }}, {{ stimulus.stimb }}, \"{{ stimulus.stimshape }}\")'>{{ stimulus.stimlabel }}</button></td></tr>");
+            }
+        {% endfor %}
+
+        // Set board colors to hidden inputs
+        {% for board in boards %}
+            if (boardID === {{ board.boardid }}) {
+                $("#BoardRvalue").val({{ board.boardr }});
+                $("#BoardGvalue").val({{ board.boardg }});
+                $("#BoardBvalue").val({{ board.boardb }});
+                $("#BackgroundRvalue").val({{ board.boardbackgroundr }});
+                $("#BackgroundGvalue").val({{ board.boardbackgroundg }});
+                $("#BackgroundBvalue").val({{ board.boardbackgroundb }});
+            }
+        {% endfor %}
+        // Change board colors based on hidden inputs
+        setBoardRGB();
+        setBackgroundRGB();
     </script>
     {% endif %}
 

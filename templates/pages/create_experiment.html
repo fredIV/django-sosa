@@ -52,7 +52,7 @@
     </div>
         <input type="button" class="btn btn-info"
                value="Send Experiment"
-               onclick="location.href='{% url 'experiment' stimsetid=3 boardid=4%}';">
+               onclick="urlStimBoardSend()">
 
 {#        This needs to be dynamic values based on what's selected#}
 
@@ -64,10 +64,26 @@
     <input type="hidden" id="BackgroundBvalue">
 
     <script>
+
+
+    var boardID_2 ;
+    var stimID_2 ;
+
+    function urlStimBoardSend(){
+        console.log(boardID_2 + " " + stimID_2);
+        if(boardID_2 != null && stimID_2 != null){
+           var url= "{% url 'experiment' stimsetid=123 boardid=456%}".replace('123',stimID_2).replace('456',boardID_2);
+           location.href= url;
+        }
+
+    }
+
+
         function loadBoard(boardID) {
+            boardID_2 = boardID;
             // Set board colors to hidden inputs
             {% for board in boards %}
-                if (boardID == {{ board.boardid }}) {
+                if (boardID === {{ board.boardid }}) {
                     $("#BoardRvalue").val({{ board.boardr }});
                     $("#BoardGvalue").val({{ board.boardg }});
                     $("#BoardBvalue").val({{ board.boardb }});
@@ -82,6 +98,7 @@
         }
 
         function loadStimset(stimsetID) {
+            stimID_2 = stimsetID;
             // Reset the table
             $("#stimTable").html("<tr class='header'><th>Stimuli</th></tr>");
             // Add stims from stimset to table

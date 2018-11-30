@@ -101,11 +101,12 @@ class CreateExperimentPageView(ListView):
         return context
 
 
-class ViewExperimentPageView(ListView):
+class ViewExperimentPageView(TemplateView):
     template_name = "pages/view_experiment.html"
-    queryset = StimSets.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super(ViewExperimentPageView, self).get_context_data(**kwargs)
         context['boards'] = Boards.objects.all()
+        context['stimsets'] = StimSets.objects.all()
+        context['stimuli'] = Stims.objects.all()
         return context
