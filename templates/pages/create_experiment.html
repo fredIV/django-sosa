@@ -83,7 +83,7 @@
             boardID_2 = boardID;
             // Set board colors to hidden inputs
             {% for board in boards %}
-                if (boardID == {{ board.boardid }}) {
+                if (boardID === {{ board.boardid }}) {
                     $("#BoardRvalue").val({{ board.boardr }});
                     $("#BoardGvalue").val({{ board.boardg }});
                     $("#BoardBvalue").val({{ board.boardb }});
