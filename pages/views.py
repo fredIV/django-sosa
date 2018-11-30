@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, FormView, ListView, UpdateView, CreateView
+from django.views.generic import TemplateView, FormView, ListView, UpdateView, CreateView, View
 from django.urls import reverse_lazy
 from urllib import request
 from django.shortcuts import render
@@ -101,5 +101,11 @@ class CreateExperimentPageView(ListView):
         return context
 
 
-class ViewExperimentPageView(TemplateView):
+class ViewExperimentPageView(ListView):
     template_name = "pages/view_experiment.html"
+    queryset = StimSets.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(ViewExperimentPageView, self).get_context_data(**kwargs)
+        context['boards'] = Boards.objects.all()
+        return context
