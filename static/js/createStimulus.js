@@ -236,6 +236,6 @@ $(document).ready(function() {
 
        }
     })
-})
+});
 
 
